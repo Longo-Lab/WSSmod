@@ -56,7 +56,7 @@ result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-WSSmod::calculate_WSS(expr_matrix, result)
+WSSmod::calculate_WSS(expr_matrix, result, min_module_size = 1)
 ```
 
 WSSmod also ships prebuilt module/weighting reference sets so you don't have

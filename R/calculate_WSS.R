@@ -16,6 +16,12 @@
 #'   `NULL`. Defaults to `"core_AD_plasma_biomarkers"`. See
 #'   [list_prebuilt_wss()] for available options. Ignored if `result` is
 #'   supplied.
+#' @param dedup_by Name of the column used to rank duplicate gene/module
+#'   assignments when a gene appears in `result` more than once; only the
+#'   highest-ranked assignment per gene is kept. Defaults to
+#'   `"mean_alpha_scaled"`.
+#' @param min_module_size Minimum number of genes a module must retain
+#'   (after deduplication) to be included in the output. Defaults to `4`.
 #'
 #' @return A list containing:
 #'   \item{scores}{Matrix of weighted module scores (samples x modules)}
@@ -45,8 +51,8 @@
 #'   mean_alpha_scaled = c(1, 1, 2, 1)
 #' )
 #'
-#' # Calculate weighted module scores
-#' module_results <- calculate_WSS(expr_matrix, cluster_result)
+#' # Calculate weighted module scores (min_module_size = 1 to keep this toy example)
+#' module_results <- calculate_WSS(expr_matrix, cluster_result, min_module_size = 1)
 #'
 #' # Access score matrix
 #' scores <- module_results$scores
@@ -62,11 +68,14 @@
 #' @import data.table
 #' @importFrom stats sd
 #' @export
-calculate_WSS <- function(expr_matrix, result = NULL, prebuilt = "core_AD_plasma_biomarkers") {
+calculate_WSS <- function(expr_matrix, result = NULL, prebuilt = "core_AD_plasma_biomarkers",
+                           dedup_by = "mean_alpha_scaled", min_module_size = 4) {
 
   if (is.null(result)) {
     result <- load_prebuilt_wss(prebuilt)
   }
+
+  result <- .filter_wss_result(result, dedup_by = dedup_by, min_module_size = min_module_size)
 
   # Get unique modules
   modules <- unique(result$module)

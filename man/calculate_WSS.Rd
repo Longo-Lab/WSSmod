@@ -7,7 +7,9 @@
 calculate_WSS(
   expr_matrix,
   result = NULL,
-  prebuilt = "core_AD_plasma_biomarkers"
+  prebuilt = "core_AD_plasma_biomarkers",
+  dedup_by = "mean_alpha_scaled",
+  min_module_size = 4
 )
 }
 \arguments{
@@ -24,6 +26,14 @@ reference set shipped with the package is used instead; see \code{prebuilt}.}
 \code{NULL}. Defaults to \code{"core_AD_plasma_biomarkers"}. See
 \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}} for available options. Ignored if \code{result} is
 supplied.}
+
+\item{dedup_by}{Name of the column used to rank duplicate gene/module
+assignments when a gene appears in \code{result} more than once; only the
+highest-ranked assignment per gene is kept. Defaults to
+\code{"mean_alpha_scaled"}.}
+
+\item{min_module_size}{Minimum number of genes a module must retain
+(after deduplication) to be included in the output. Defaults to \code{4}.}
 }
 \value{
 A list containing:
@@ -60,8 +70,8 @@ cluster_result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-# Calculate weighted module scores
-module_results <- calculate_WSS(expr_matrix, cluster_result)
+# Calculate weighted module scores (min_module_size = 1 to keep this toy example)
+module_results <- calculate_WSS(expr_matrix, cluster_result, min_module_size = 1)
 
 # Access score matrix
 scores <- module_results$scores

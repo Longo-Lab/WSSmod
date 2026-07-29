@@ -45,7 +45,7 @@ result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-WSSmod::calculate_WSS(expr_matrix, result)
+WSSmod::calculate_WSS(expr_matrix, result, min_module_size = 1)
 #> $scores
 #>         mod1 mod2
 #> sample1  2.0    7
@@ -63,7 +63,7 @@ WSSmod::calculate_WSS(expr_matrix, result)
 #> 
 #> $module_proteins
 #> $module_proteins$mod1
-#> [1] "geneA" "geneB" "geneC"
+#> [1] "geneC" "geneA" "geneB"
 #> 
 #> $module_proteins$mod2
 #> [1] "geneD"

@@ -2,18 +2,15 @@ test_that("list_prebuilt_wss reports the built-in reference set", {
   expect_true("core_AD_plasma_biomarkers" %in% list_prebuilt_wss())
 })
 
-test_that("load_prebuilt_wss returns a filtered, deduplicated module table", {
+test_that("load_prebuilt_wss returns the raw module table with module IDs assigned", {
   result <- load_prebuilt_wss("core_AD_plasma_biomarkers")
 
   expect_true(data.table::is.data.table(result))
   expect_true(all(c("module", "symbol", "mean_beta", "mean_alpha_scaled") %in% names(result)))
 
-  # No protein should appear in more than one module (deduplicated by symbol)
-  expect_equal(anyDuplicated(result$symbol), 0)
-
-  # Singleton/doubleton modules should have been filtered out
-  sizes <- result[, .N, by = module]
-  expect_true(all(sizes$N > 2))
+  # The raw table may assign the same protein to more than one module;
+  # deduplication happens later in calculate_WSS(), not here.
+  expect_gt(sum(duplicated(result$symbol)), 0)
 })
 
 test_that("load_prebuilt_wss errors on an unknown prebuilt name", {
