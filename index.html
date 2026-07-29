@@ -80,7 +80,7 @@
 <span>  mean_alpha_scaled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">WSSmod</span><span class="fu">::</span><span class="fu"><a href="reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">expr_matrix</span>, <span class="va">result</span><span class="op">)</span></span>
+<span><span class="fu">WSSmod</span><span class="fu">::</span><span class="fu"><a href="reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">expr_matrix</span>, <span class="va">result</span>, min_module_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $scores</span></span>
 <span><span class="co">#&gt;         mod1 mod2</span></span>
 <span><span class="co">#&gt; sample1  2.0    7</span></span>
@@ -98,7 +98,7 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $module_proteins</span></span>
 <span><span class="co">#&gt; $module_proteins$mod1</span></span>
-<span><span class="co">#&gt; [1] "geneA" "geneB" "geneC"</span></span>
+<span><span class="co">#&gt; [1] "geneC" "geneA" "geneB"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $module_proteins$mod2</span></span>
 <span><span class="co">#&gt; [1] "geneD"</span></span></code></pre></div>

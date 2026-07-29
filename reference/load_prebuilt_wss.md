@@ -1,10 +1,11 @@
 # Load a Prebuilt WSS Module/Weighting Table
 
-Reads one of the module weighting tables shipped with WSSmod and applies
-the same deduplication and filtering used to build the reference sets:
-for proteins assigned to multiple modules, only the assignment with the
-highest `mean_alpha_scaled` is kept, and modules with two or fewer
-proteins are dropped.
+Reads one of the module weighting tables shipped with WSSmod. The raw
+table may assign the same protein to more than one module (e.g. once per
+biomarker it was associated with);
+[`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
+deduplicates and filters this table before use via `dedup_by` and
+`min_module_size`.
 
 ## Usage
 
@@ -22,8 +23,8 @@ load_prebuilt_wss(prebuilt = "core_AD_plasma_biomarkers")
 
 ## Value
 
-A data.table with columns `module`, `symbol`, `mean_beta`, and
-`mean_alpha_scaled`, suitable for use as the `result` argument of
+A data.table with (at least) columns `module`, `symbol`, `mean_beta`,
+and `mean_alpha_scaled`, suitable for use as the `result` argument of
 [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md).
 
 ## See also

@@ -50,7 +50,9 @@ and weights by network importance and biomarker association strength.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_WSS</span><span class="op">(</span></span>
 <span>  <span class="va">expr_matrix</span>,</span>
 <span>  result <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  prebuilt <span class="op">=</span> <span class="st">"core_AD_plasma_biomarkers"</span></span>
+<span>  prebuilt <span class="op">=</span> <span class="st">"core_AD_plasma_biomarkers"</span>,</span>
+<span>  dedup_by <span class="op">=</span> <span class="st">"mean_alpha_scaled"</span>,</span>
+<span>  min_module_size <span class="op">=</span> <span class="fl">4</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -76,6 +78,18 @@ reference set shipped with the package is used instead; see <code>prebuilt</code
 <code>NULL</code>. Defaults to <code>"core_AD_plasma_biomarkers"</code>. See
 <code><a href="list_prebuilt_wss.html">list_prebuilt_wss()</a></code> for available options. Ignored if <code>result</code> is
 supplied.</p></dd>
+
+
+<dt id="arg-dedup-by">dedup_by<a class="anchor" aria-label="anchor" href="#arg-dedup-by"></a></dt>
+<dd><p>Name of the column used to rank duplicate gene/module
+assignments when a gene appears in <code>result</code> more than once; only the
+highest-ranked assignment per gene is kept. Defaults to
+<code>"mean_alpha_scaled"</code>.</p></dd>
+
+
+<dt id="arg-min-module-size">min_module_size<a class="anchor" aria-label="anchor" href="#arg-min-module-size"></a></dt>
+<dd><p>Minimum number of genes a module must retain
+(after deduplication) to be included in the output. Defaults to <code>4</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -122,8 +136,8 @@ disease progression.</p>
 <span class="r-in"><span>  mean_alpha_scaled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Calculate weighted module scores</span></span></span>
-<span class="r-in"><span><span class="va">module_results</span> <span class="op">&lt;-</span> <span class="fu">calculate_WSS</span><span class="op">(</span><span class="va">expr_matrix</span>, <span class="va">cluster_result</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Calculate weighted module scores (min_module_size = 1 to keep this toy example)</span></span></span>
+<span class="r-in"><span><span class="va">module_results</span> <span class="op">&lt;-</span> <span class="fu">calculate_WSS</span><span class="op">(</span><span class="va">expr_matrix</span>, <span class="va">cluster_result</span>, min_module_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Access score matrix</span></span></span>
 <span class="r-in"><span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="va">module_results</span><span class="op">$</span><span class="va">scores</span></span></span>
