@@ -1,0 +1,18 @@
+Package: WSSmod
+Title: Weighted Sum of Scores for Protein Network Modules
+Version: 0.0.0.9000
+Authors@R: 
+    person("Robert", "Butler", , "rrbutler@stanford.edu", role = c("aut", "cre"))
+Description: Tools to construct Weighted Sum of Scores (WSS) module-level
+    summaries from proteomic data, using STRING network connectivity and
+    biomarker-association weighting to align and aggregate protein-level
+    signal into module scores.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    data.table
