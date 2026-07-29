@@ -10,7 +10,12 @@
 #'   in the result table.
 #' @param result A data.table containing module information with required columns:
 #'   module, symbol (gene identifiers), mean_beta (for sign-flipping),
-#'   mean_alpha_scaled (for weighting).
+#'   mean_alpha_scaled (for weighting). If `NULL` (the default), a prebuilt
+#'   reference set shipped with the package is used instead; see `prebuilt`.
+#' @param prebuilt Name of a prebuilt reference set to use when `result` is
+#'   `NULL`. Defaults to `"core_AD_plasma_biomarkers"`. See
+#'   [list_prebuilt_wss()] for available options. Ignored if `result` is
+#'   supplied.
 #'
 #' @return A list containing:
 #'   \item{scores}{Matrix of weighted module scores (samples x modules)}
@@ -41,7 +46,7 @@
 #' )
 #'
 #' # Calculate weighted module scores
-#' module_results <- calculate_weighted_module_scores(expr_matrix, cluster_result)
+#' module_results <- calculate_WSS(expr_matrix, cluster_result)
 #'
 #' # Access score matrix
 #' scores <- module_results$scores
@@ -52,10 +57,16 @@
 #' # Check standard deviations
 #' print(module_results$module_sd)
 #'
+#' @seealso [list_prebuilt_wss()], [load_prebuilt_wss()], [wss_prebuilt_terms()]
+#'
 #' @import data.table
 #' @importFrom stats sd
 #' @export
-calculate_weighted_module_scores <- function(expr_matrix, result) {
+calculate_WSS <- function(expr_matrix, result = NULL, prebuilt = "core_AD_plasma_biomarkers") {
+
+  if (is.null(result)) {
+    result <- load_prebuilt_wss(prebuilt)
+  }
 
   # Get unique modules
   modules <- unique(result$module)

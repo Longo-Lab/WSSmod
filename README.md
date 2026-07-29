@@ -27,6 +27,8 @@ pak::pak("Longo-Lab/WSSmod")
 
 ## Example
 
+Using a custom module/weighting table:
+
 ``` r
 library(WSSmod)
 
@@ -43,7 +45,7 @@ result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-WSSmod::calculate_weighted_module_scores(expr_matrix, result)
+WSSmod::calculate_WSS(expr_matrix, result)
 #> $scores
 #>         mod1 mod2
 #> sample1  2.0    7
@@ -65,4 +67,20 @@ WSSmod::calculate_weighted_module_scores(expr_matrix, result)
 #> 
 #> $module_proteins$mod2
 #> [1] "geneD"
+```
+
+WSSmod also ships prebuilt module/weighting reference sets so you don’t
+have to build your own module table from scratch. `calculate_WSS()` uses
+`prebuilt = "core_AD_plasma_biomarkers"` by default when `result =
+NULL`:
+
+``` r
+list_prebuilt_wss()
+
+# expr_matrix here has samples as rows and protein/gene symbols as columns,
+# matching the symbols used by the prebuilt reference set
+WSSmod::calculate_WSS(expr_matrix)
+
+# Human-readable module term labels for the same reference set
+wss_prebuilt_terms("core_AD_plasma_biomarkers")
 ```
