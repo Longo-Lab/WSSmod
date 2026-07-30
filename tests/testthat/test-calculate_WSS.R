@@ -107,7 +107,7 @@ test_that("calculate_WSS drops modules smaller than min_module_size", {
     mean_alpha_scaled = c(1, 1, 1)
   )
 
-  # Default min_module_size = 4 drops both 2-gene and 1-gene modules
+  # Default min_module_size = 3 drops both the 2-gene and 1-gene modules
   out_default <- calculate_WSS(expr_matrix, result)
   expect_equal(ncol(out_default$scores), 0)
 

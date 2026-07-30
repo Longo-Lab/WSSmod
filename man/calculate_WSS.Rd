@@ -9,7 +9,7 @@ calculate_WSS(
   result = NULL,
   prebuilt = "core_AD_plasma_biomarkers",
   dedup_by = "mean_alpha_scaled",
-  min_module_size = 4
+  min_module_size = 3
 )
 }
 \arguments{
@@ -33,7 +33,9 @@ highest-ranked assignment per gene is kept. Defaults to
 \code{"mean_alpha_scaled"}.}
 
 \item{min_module_size}{Minimum number of genes a module must retain
-(after deduplication) to be included in the output. Defaults to \code{4}.}
+(after deduplication) to be included in the output. Defaults to \code{3},
+matching the module size filter (\code{N > 2}) used to build the original
+\code{core_AD_plasma_biomarkers} reference set.}
 }
 \value{
 A list containing:

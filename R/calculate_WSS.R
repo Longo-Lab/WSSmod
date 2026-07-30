@@ -21,7 +21,9 @@
 #'   highest-ranked assignment per gene is kept. Defaults to
 #'   `"mean_alpha_scaled"`.
 #' @param min_module_size Minimum number of genes a module must retain
-#'   (after deduplication) to be included in the output. Defaults to `4`.
+#'   (after deduplication) to be included in the output. Defaults to `3`,
+#'   matching the module size filter (`N > 2`) used to build the original
+#'   `core_AD_plasma_biomarkers` reference set.
 #'
 #' @return A list containing:
 #'   \item{scores}{Matrix of weighted module scores (samples x modules)}
@@ -69,7 +71,7 @@
 #' @importFrom stats sd
 #' @export
 calculate_WSS <- function(expr_matrix, result = NULL, prebuilt = "core_AD_plasma_biomarkers",
-                           dedup_by = "mean_alpha_scaled", min_module_size = 4) {
+                           dedup_by = "mean_alpha_scaled", min_module_size = 3) {
 
   if (is.null(result)) {
     result <- load_prebuilt_wss(prebuilt)

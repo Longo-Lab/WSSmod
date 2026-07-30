@@ -3,7 +3,7 @@
 # For genes assigned to more than one module, only the row with the highest
 # value of `dedup_by` is kept. Modules with fewer than `min_module_size`
 # remaining genes are dropped entirely.
-.filter_wss_result <- function(result, dedup_by = "mean_alpha_scaled", min_module_size = 4) {
+.filter_wss_result <- function(result, dedup_by = "mean_alpha_scaled", min_module_size = 3) {
   if (!dedup_by %in% names(result)) {
     stop(sprintf(
       "dedup_by column '%s' not found in result table. Available columns: %s",
