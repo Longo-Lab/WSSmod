@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![Version](https://img.shields.io/github/r-package/v/Longo-Lab/WSSmod)](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
+[![Version](https://img.shields.io/badge/version-0.0.0.9000-blue.svg)](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml)
