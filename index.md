@@ -64,8 +64,9 @@ WSSmod::calculate_WSS(expr_matrix, result, min_module_size = 1)
 #> [1] "geneD"
 ```
 
-WSSmod also ships prebuilt module/weighting reference sets so you don’t
-have to build your own module table from scratch.
+WSSmod also has prebuilt module/weighting reference sets, including
+those from the Butler et al paper, so you don’t have to build your own
+module table from scratch.
 [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
 uses `prebuilt = "core_AD_plasma_biomarkers"` by default when
 `result = NULL`:

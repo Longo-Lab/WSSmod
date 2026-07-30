@@ -2,7 +2,7 @@ pandoc: 3.8.3
 pkgdown: 2.2.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2026-07-30T02:04Z
+last_built: 2026-07-30T16:11Z
 urls:
   reference: https://Longo-Lab.github.io/WSSmod/reference
   article: https://Longo-Lab.github.io/WSSmod/articles
