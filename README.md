@@ -5,6 +5,12 @@
 
 <!-- badges: start -->
 
+[![Version](https://img.shields.io/github/r-package/v/Longo-Lab/WSSmod)](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/Longo-Lab/WSSmod/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Longo-Lab/WSSmod?branch=main)
 <!-- badges: end -->
 
 WSSmod provides tools to construct Weighted Sum of Scores (WSS)
