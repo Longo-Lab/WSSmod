@@ -52,7 +52,7 @@ and weights by network importance and biomarker association strength.</p>
 <span>  result <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  prebuilt <span class="op">=</span> <span class="st">"core_AD_plasma_biomarkers"</span>,</span>
 <span>  dedup_by <span class="op">=</span> <span class="st">"mean_alpha_scaled"</span>,</span>
-<span>  min_module_size <span class="op">=</span> <span class="fl">4</span></span>
+<span>  min_module_size <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -89,7 +89,9 @@ highest-ranked assignment per gene is kept. Defaults to
 
 <dt id="arg-min-module-size">min_module_size<a class="anchor" aria-label="anchor" href="#arg-min-module-size"></a></dt>
 <dd><p>Minimum number of genes a module must retain
-(after deduplication) to be included in the output. Defaults to <code>4</code>.</p></dd>
+(after deduplication) to be included in the output. Defaults to <code>3</code>,
+matching the module size filter (<code>N &gt; 2</code>) used to build the original
+<code>core_AD_plasma_biomarkers</code> reference set.</p></dd>
 
 </dl></div>
     <div class="section level2">

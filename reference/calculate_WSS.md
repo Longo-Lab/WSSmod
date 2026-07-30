@@ -14,7 +14,7 @@ calculate_WSS(
   result = NULL,
   prebuilt = "core_AD_plasma_biomarkers",
   dedup_by = "mean_alpha_scaled",
-  min_module_size = 4
+  min_module_size = 3
 )
 ```
 
@@ -50,7 +50,9 @@ calculate_WSS(
 - min_module_size:
 
   Minimum number of genes a module must retain (after deduplication) to
-  be included in the output. Defaults to `4`.
+  be included in the output. Defaults to `3`, matching the module size
+  filter (`N > 2`) used to build the original
+  `core_AD_plasma_biomarkers` reference set.
 
 ## Value
 
