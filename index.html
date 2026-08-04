@@ -102,7 +102,7 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $module_proteins$mod2</span></span>
 <span><span class="co">#&gt; [1] "geneD"</span></span></code></pre></div>
-<p>WSSmod also has prebuilt module/weighting reference sets, including those from the Butler et al paper, so you don’t have to build your own module table from scratch. <code><a href="reference/calculate_WSS.html">calculate_WSS()</a></code> uses <code>prebuilt = "core_AD_plasma_biomarkers"</code> by default when <code>result = NULL</code>:</p>
+<p>WSSmod also ships prebuilt module/weighting reference sets so you don’t have to build your own module table from scratch. <code><a href="reference/calculate_WSS.html">calculate_WSS()</a></code> uses <code>prebuilt = "core_AD_plasma_biomarkers"</code> by default when <code>result = NULL</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/list_prebuilt_wss.html">list_prebuilt_wss</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -112,6 +112,28 @@
 <span></span>
 <span><span class="co"># Human-readable module term labels for the same reference set</span></span>
 <span><span class="fu"><a href="reference/wss_prebuilt_terms.html">wss_prebuilt_terms</a></span><span class="op">(</span><span class="st">"core_AD_plasma_biomarkers"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="predicting-module-scores-from-core-biomarkers">Predicting module scores from core biomarkers<a class="anchor" aria-label="anchor" href="#predicting-module-scores-from-core-biomarkers"></a>
+</h2>
+<p><code><a href="reference/predict_WSS.html">predict_WSS()</a></code> predicts module scores for a prebuilt reference set from a small set of covariates, using a fitted <code>joinet</code> model, without needing the full proteomic panel. For <code>"core_AD_plasma_biomarkers"</code> this predicts all 75 module scores from Age, Gender, and the 8 core plasma biomarkers used in the original analysis. This requires the <code>glmnet</code> and <code>joinet</code> packages.</p>
+<p>The 8 biomarker columns (suffixed <code>_norm</code>) must already be rank-based inverse-normal transformed (e.g. via <code>RNOmni::RankNorm()</code>) relative to your own reference cohort — this transform is inherently relative to the distribution it’s computed against, so <code><a href="reference/predict_WSS.html">predict_WSS()</a></code> does not attempt it for you.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  Age <span class="op">=</span> <span class="fl">72</span>,</span>
+<span>  Gender <span class="op">=</span> <span class="fl">1</span>, <span class="co"># 1 = male, 0 = not male</span></span>
+<span>  PlasmaPTau181_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmaAB142P_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmaAB140P_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmaABRatio_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmapTau217_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmapTau217_AB42Ratio_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmaGFAP_norm <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  PlasmaNfL_norm <span class="op">=</span> <span class="fl">0</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/predict_WSS.html">predict_WSS</a></span><span class="op">(</span><span class="va">newdata</span><span class="op">)</span></span>
+<span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -151,7 +173,7 @@
 <li><a href="https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION" class="external-link"><img src="https://img.shields.io/badge/version-0.0.0.9000-blue.svg" alt="Version"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/github/Longo-Lab/WSSmod" class="external-link"><img src="https://codecov.io/github/Longo-Lab/WSSmod/graph/badge.svg?token=YU275M964D" alt="codecov"></a></li>
+<li><a href="https://app.codecov.io/gh/Longo-Lab/WSSmod?branch=main" class="external-link"><img src="https://codecov.io/gh/Longo-Lab/WSSmod/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
