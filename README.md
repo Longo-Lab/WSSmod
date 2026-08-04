@@ -9,7 +9,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/github/Longo-Lab/WSSmod/graph/badge.svg?token=YU275M964D)](https://codecov.io/github/Longo-Lab/WSSmod)
+[![Codecov test
+coverage](https://codecov.io/gh/Longo-Lab/WSSmod/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Longo-Lab/WSSmod?branch=main)
 <!-- badges: end -->
 
 WSSmod provides tools to construct Weighted Sum of Scores (WSS)
@@ -74,7 +75,7 @@ WSSmod::calculate_WSS(expr_matrix, result, min_module_size = 1)
 #> [1] "geneD"
 ```
 
-WSSmod also has prebuilt module/weighting reference sets, including those from the Butler et al paper, so you don’t
+WSSmod also ships prebuilt module/weighting reference sets so you don’t
 have to build your own module table from scratch. `calculate_WSS()` uses
 `prebuilt = "core_AD_plasma_biomarkers"` by default when `result =
 NULL`:
@@ -88,4 +89,37 @@ WSSmod::calculate_WSS(expr_matrix)
 
 # Human-readable module term labels for the same reference set
 wss_prebuilt_terms("core_AD_plasma_biomarkers")
+```
+
+## Predicting module scores from core biomarkers
+
+`predict_WSS()` predicts module scores for a prebuilt reference set from
+a small set of covariates, using a fitted `joinet` model, without
+needing the full proteomic panel. For `"core_AD_plasma_biomarkers"` this
+predicts all 75 module scores from Age, Gender, and the 8 core plasma
+biomarkers used in the original analysis. This requires the `glmnet` and
+`joinet` packages.
+
+The 8 biomarker columns (suffixed `_norm`) must already be rank-based
+inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) relative to
+your own reference cohort — this transform is inherently relative to the
+distribution it’s computed against, so `predict_WSS()` does not attempt
+it for you.
+
+``` r
+newdata <- data.frame(
+  Age = 72,
+  Gender = 1, # 1 = male, 0 = not male
+  PlasmaPTau181_norm = 0,
+  PlasmaAB142P_norm = 0,
+  PlasmaAB140P_norm = 0,
+  PlasmaABRatio_norm = 0,
+  PlasmapTau217_norm = 0,
+  PlasmapTau217_AB42Ratio_norm = 0,
+  PlasmaGFAP_norm = 0,
+  PlasmaNfL_norm = 0
+)
+
+pred <- predict_WSS(newdata)
+pred$meta
 ```

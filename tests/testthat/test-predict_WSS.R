@@ -1,0 +1,90 @@
+test_that("load_prebuilt_wss_model returns the bundled joinet model for the default set", {
+  model_info <- load_prebuilt_wss_model("core_AD_plasma_biomarkers")
+
+  expect_type(model_info, "list")
+  expect_true(all(c("model", "outcomes", "variant", "x_cols") %in% names(model_info)))
+  expect_equal(model_info$variant, "Biomarkers_Age_Sex")
+  expect_equal(
+    model_info$x_cols,
+    c(
+      "Age", "Gender", "PlasmaPTau181_norm", "PlasmaAB142P_norm",
+      "PlasmaAB140P_norm", "PlasmaABRatio_norm", "PlasmapTau217_norm",
+      "PlasmapTau217_AB42Ratio_norm", "PlasmaGFAP_norm", "PlasmaNfL_norm"
+    )
+  )
+  expect_length(model_info$outcomes, 75)
+})
+
+test_that("predict_WSS errors on an unknown prebuilt name", {
+  newdata <- data.frame(Age = 72, Gender = 1)
+  expect_error(
+    predict_WSS(newdata, prebuilt = "not_a_real_set"),
+    "Unknown prebuilt WSS reference set"
+  )
+})
+
+test_that("predict_WSS errors when required columns are missing", {
+  newdata <- data.frame(Age = 72, Gender = 1)
+  expect_error(
+    predict_WSS(newdata),
+    "missing required column"
+  )
+})
+
+test_that("predict_WSS errors when a required column is non-numeric", {
+  skip_if_not_installed("glmnet")
+  skip_if_not_installed("joinet")
+
+  newdata <- data.frame(
+    Age = 72, Gender = "M",
+    PlasmaPTau181_norm = 0, PlasmaAB142P_norm = 0, PlasmaAB140P_norm = 0,
+    PlasmaABRatio_norm = 0, PlasmapTau217_norm = 0,
+    PlasmapTau217_AB42Ratio_norm = 0, PlasmaGFAP_norm = 0, PlasmaNfL_norm = 0
+  )
+
+  expect_error(predict_WSS(newdata), "must be numeric")
+})
+
+test_that("predict_WSS returns base and meta predictions for all outcomes", {
+  skip_if_not_installed("glmnet")
+  skip_if_not_installed("joinet")
+
+  newdata <- data.frame(
+    Age = c(72, 65),
+    Gender = c(1, 0),
+    PlasmaPTau181_norm = c(0, 0.5),
+    PlasmaAB142P_norm = c(0, -0.5),
+    PlasmaAB140P_norm = c(0, 0.2),
+    PlasmaABRatio_norm = c(0, -0.2),
+    PlasmapTau217_norm = c(0, 0.1),
+    PlasmapTau217_AB42Ratio_norm = c(0, -0.1),
+    PlasmaGFAP_norm = c(0, 0.3),
+    PlasmaNfL_norm = c(0, -0.3),
+    row.names = c("subject1", "subject2")
+  )
+
+  pred <- predict_WSS(newdata)
+
+  expect_named(pred, c("base", "meta"))
+  expect_equal(dim(pred$base), c(2, 75))
+  expect_equal(dim(pred$meta), c(2, 75))
+  expect_equal(rownames(pred$meta), c("subject1", "subject2"))
+  expect_true(all(load_prebuilt_wss_model()$outcomes %in% colnames(pred$meta)))
+  expect_true(all(is.finite(pred$meta)))
+
+  # Predictions for the two (different) synthetic subjects should differ
+  expect_false(isTRUE(all.equal(pred$meta["subject1", ], pred$meta["subject2", ])))
+})
+
+test_that("predict_WSS accepts a matrix in addition to a data.frame", {
+  skip_if_not_installed("glmnet")
+  skip_if_not_installed("joinet")
+
+  x_cols <- load_prebuilt_wss_model()$x_cols
+  newdata_mat <- matrix(0, nrow = 1, ncol = length(x_cols), dimnames = list("subject1", x_cols))
+  newdata_mat[, "Age"] <- 72
+  newdata_mat[, "Gender"] <- 1
+
+  pred <- predict_WSS(newdata_mat)
+  expect_equal(dim(pred$meta), c(1, 75))
+})

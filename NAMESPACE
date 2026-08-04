@@ -3,6 +3,8 @@
 export(calculate_WSS)
 export(list_prebuilt_wss)
 export(load_prebuilt_wss)
+export(load_prebuilt_wss_model)
+export(predict_WSS)
 export(wss_prebuilt_terms)
 import(data.table)
 importFrom(data.table,fread)
