@@ -17,15 +17,10 @@
 #'
 #'   **The `_norm` biomarker columns must already be rank-based
 #'   inverse-normal transformed (e.g. via [RNOmni::RankNorm()]) across the
-#'   new cohort you are predicting on before calling this function.**
-#'   This was verified against the original paper's held-out follow-up
-#'   cohort: applying `RNOmni::RankNorm()` to each of the 8 raw biomarkers
-#'   *within that follow-up cohort alone* (not relative to the original
-#'   training cohort, and not left untransformed) exactly reproduces the
-#'   paper's published follow-up predictions (max abs difference ~5e-15).
-#'   Because a rank transform requires multiple values to rank against,
-#'   this means `predict_WSS()` is designed for predicting on a batch/cohort
-#'   of new samples together, not a single new patient in isolation -- this
+#'   new cohort you are predicting on before calling this function.** Because
+#'   a rank transform requires multiple values to rank against, this means
+#'   `predict_WSS()` is designed for predicting on a batch/cohort of new
+#'   samples together, not a single new patient in isolation -- this
 #'   function does not attempt the transform for you.
 #' @param prebuilt Name of a prebuilt reference set. See
 #'   [list_prebuilt_wss()] for available options.

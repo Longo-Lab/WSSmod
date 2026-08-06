@@ -101,15 +101,10 @@ biomarkers used in the original analysis. This requires the `glmnet` and
 
 The 8 biomarker columns (suffixed `_norm`) must already be rank-based
 inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) **across the
-new cohort you are predicting on**. This was verified against the
-original paper’s held-out follow-up cohort: rank-normalizing the 8 raw
-biomarkers *within that follow-up cohort alone* (not relative to the
-original training cohort, and not left untransformed) exactly reproduces
-the paper’s published follow-up predictions (max abs difference
-\~5e-15). Because a rank transform needs multiple values to rank
-against, `predict_WSS()` is designed to predict on a batch/cohort of new
-samples together, not a single new patient in isolation — this function
-does not attempt the transform for you.
+new cohort you are predicting on**. Because a rank transform needs
+multiple values to rank against, `predict_WSS()` is designed to predict
+on a batch/cohort of new samples together, not a single new patient in
+isolation — this function does not attempt the transform for you.
 
 ``` r
 # raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns
