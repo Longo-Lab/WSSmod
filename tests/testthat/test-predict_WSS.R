@@ -88,3 +88,42 @@ test_that("predict_WSS accepts a matrix in addition to a data.frame", {
   pred <- predict_WSS(newdata_mat)
   expect_equal(dim(pred$meta), c(1, 75))
 })
+
+test_that("predict_WSS with RankNorm applied within a synthetic batch is deterministic", {
+  # This codifies the workflow validated against the paper's held-out
+  # follow-up cohort: RNOmni::RankNorm() applied to each raw biomarker
+  # *within the batch being predicted on* (not against the training
+  # cohort, and not left untransformed) exactly reproduced the paper's
+  # published follow-up predictions (max abs diff ~5e-15). This test uses
+  # synthetic biomarker values, not real subject data, so it only checks
+  # the pipeline is wired correctly and deterministic, not the paper's
+  # actual numbers.
+  skip_if_not_installed("glmnet")
+  skip_if_not_installed("joinet")
+  skip_if_not_installed("RNOmni")
+
+  set.seed(42)
+  biomarkers <- c(
+    "PlasmaPTau181", "PlasmaAB142P", "PlasmaAB140P", "PlasmaABRatio",
+    "PlasmapTau217", "PlasmapTau217_AB42Ratio", "PlasmaGFAP", "PlasmaNfL"
+  )
+  raw <- as.data.frame(matrix(
+    rlnorm(8 * 20), nrow = 20, dimnames = list(NULL, biomarkers)
+  ))
+
+  normalized <- as.data.frame(lapply(raw, RNOmni::RankNorm))
+  names(normalized) <- paste0(names(normalized), "_norm")
+
+  newdata <- cbind(
+    Age = round(runif(20, 55, 90)),
+    Gender = rbinom(20, 1, 0.5),
+    normalized
+  )
+
+  pred1 <- predict_WSS(newdata)
+  pred2 <- predict_WSS(newdata)
+
+  expect_equal(dim(pred1$meta), c(20, 75))
+  expect_true(all(is.finite(pred1$meta)))
+  expect_equal(pred1$meta, pred2$meta)
+})

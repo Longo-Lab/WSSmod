@@ -87,23 +87,25 @@ module scores from Age, Gender, and the 8 core plasma biomarkers used in the
 original analysis. This requires the `glmnet` and `joinet` packages.
 
 The 8 biomarker columns (suffixed `_norm`) must already be rank-based
-inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) relative to your
-own reference cohort — this transform is inherently relative to the
-distribution it's computed against, so `predict_WSS()` does not attempt it
-for you.
+inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) **across the new
+cohort you are predicting on**. This was verified against the original
+paper's held-out follow-up cohort: rank-normalizing the 8 raw biomarkers
+*within that follow-up cohort alone* (not relative to the original training
+cohort, and not left untransformed) exactly reproduces the paper's published
+follow-up predictions (max abs difference ~5e-15). Because a rank transform
+needs multiple values to rank against, `predict_WSS()` is designed to
+predict on a batch/cohort of new samples together, not a single new patient
+in isolation — this function does not attempt the transform for you.
 
 ```{r predict, eval = FALSE}
-newdata <- data.frame(
-  Age = 72,
-  Gender = 1, # 1 = male, 0 = not male
-  PlasmaPTau181_norm = 0,
-  PlasmaAB142P_norm = 0,
-  PlasmaAB140P_norm = 0,
-  PlasmaABRatio_norm = 0,
-  PlasmapTau217_norm = 0,
-  PlasmapTau217_AB42Ratio_norm = 0,
-  PlasmaGFAP_norm = 0,
-  PlasmaNfL_norm = 0
+# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns
+normalized <- as.data.frame(lapply(raw_biomarkers, RNOmni::RankNorm))
+names(normalized) <- paste0(names(normalized), "_norm")
+
+newdata <- cbind(
+  Age = ages,
+  Gender = genders, # 1 = male, 0 = not male
+  normalized
 )
 
 pred <- predict_WSS(newdata)

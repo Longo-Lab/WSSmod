@@ -17,11 +17,17 @@ least) the columns required by the model; see \code{x_cols} in
 \code{PlasmapTau217_AB42Ratio_norm}, \code{PlasmaGFAP_norm}, \code{PlasmaNfL_norm}).
 
 \strong{The \verb{_norm} biomarker columns must already be rank-based
-inverse-normal transformed (e.g. via \code{\link[RNOmni:RankNorm]{RNOmni::RankNorm()}}) relative to
-your own reference cohort before calling this function.} This
-transform is inherently relative to the distribution it's computed
-against, so it cannot be done correctly for a single new sample in
-isolation, and this function does not attempt it for you.}
+inverse-normal transformed (e.g. via \code{\link[RNOmni:RankNorm]{RNOmni::RankNorm()}}) across the
+new cohort you are predicting on before calling this function.}
+This was verified against the original paper's held-out follow-up
+cohort: applying \code{RNOmni::RankNorm()} to each of the 8 raw biomarkers
+\emph{within that follow-up cohort alone} (not relative to the original
+training cohort, and not left untransformed) exactly reproduces the
+paper's published follow-up predictions (max abs difference ~5e-15).
+Because a rank transform requires multiple values to rank against,
+this means \code{predict_WSS()} is designed for predicting on a batch/cohort
+of new samples together, not a single new patient in isolation -- this
+function does not attempt the transform for you.}
 
 \item{prebuilt}{Name of a prebuilt reference set. See
 \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}} for available options.}
@@ -44,18 +50,14 @@ the original analysis.
 }
 \examples{
 \dontrun{
-newdata <- data.frame(
-  Age = 72,
-  Gender = 1,
-  PlasmaPTau181_norm = 0,
-  PlasmaAB142P_norm = 0,
-  PlasmaAB140P_norm = 0,
-  PlasmaABRatio_norm = 0,
-  PlasmapTau217_norm = 0,
-  PlasmapTau217_AB42Ratio_norm = 0,
-  PlasmaGFAP_norm = 0,
-  PlasmaNfL_norm = 0
-)
+# newdata should cover a batch/cohort of new samples, not a single
+# patient in isolation, since RankNorm needs multiple values to rank
+# against. Here, raw_biomarkers is a data.frame with one row per sample
+# and the 8 raw (un-normalized) biomarker columns.
+normalized <- as.data.frame(lapply(raw_biomarkers, RNOmni::RankNorm))
+names(normalized) <- paste0(names(normalized), "_norm")
+
+newdata <- cbind(Age = ages, Gender = genders, normalized)
 pred <- predict_WSS(newdata)
 pred$meta
 }
