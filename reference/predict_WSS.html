@@ -67,11 +67,9 @@ least) the columns required by the model; see <code>x_cols</code> in
 <code>PlasmaABRatio_norm</code>, <code>PlasmapTau217_norm</code>,
 <code>PlasmapTau217_AB42Ratio_norm</code>, <code>PlasmaGFAP_norm</code>, <code>PlasmaNfL_norm</code>).</p>
 <p><strong>The <code>_norm</code> biomarker columns must already be rank-based
-inverse-normal transformed (e.g. via <code>RNOmni::RankNorm()</code>) relative to
-your own reference cohort before calling this function.</strong> This
-transform is inherently relative to the distribution it's computed
-against, so it cannot be done correctly for a single new sample in
-isolation, and this function does not attempt it for you.</p></dd>
+inverse-normal transformed before calling this function</strong> – see
+<code><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> to build them from raw biomarker values,
+including for a single new patient.</p></dd>
 
 
 <dt id="arg-prebuilt">prebuilt<a class="anchor" aria-label="anchor" href="#arg-prebuilt"></a></dt>
@@ -93,24 +91,18 @@ module (named by the model's <code>outcomes</code>).</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="load_prebuilt_wss_model.html">load_prebuilt_wss_model()</a></code>, <code><a href="calculate_WSS.html">calculate_WSS()</a></code></p></div>
+    <div class="dont-index"><p><code><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code>, <code><a href="load_prebuilt_wss_model.html">load_prebuilt_wss_model()</a></code>,
+<code><a href="calculate_WSS.html">calculate_WSS()</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  Age <span class="op">=</span> <span class="fl">72</span>,</span></span>
-<span class="r-in"><span>  Gender <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>  PlasmaPTau181_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmaAB142P_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmaAB140P_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmaABRatio_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmapTau217_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmapTau217_AB42Ratio_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmaGFAP_norm <span class="op">=</span> <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>  PlasmaNfL_norm <span class="op">=</span> <span class="fl">0</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker</span></span></span>
+<span class="r-in"><span><span class="co"># columns. Works for a single patient too.</span></span></span>
+<span class="r-in"><span><span class="va">normalized</span> <span class="op">&lt;-</span> <span class="fu"><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers</a></span><span class="op">(</span><span class="va">raw_biomarkers</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="va">ages</span>, Gender <span class="op">=</span> <span class="va">genders</span>, <span class="va">normalized</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu">predict_WSS</span><span class="op">(</span><span class="va">newdata</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>

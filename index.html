@@ -117,21 +117,23 @@
 <h2 id="predicting-module-scores-from-core-biomarkers">Predicting module scores from core biomarkers<a class="anchor" aria-label="anchor" href="#predicting-module-scores-from-core-biomarkers"></a>
 </h2>
 <p><code><a href="reference/predict_WSS.html">predict_WSS()</a></code> predicts module scores for a prebuilt reference set from a small set of covariates, using a fitted <code>joinet</code> model, without needing the full proteomic panel. For <code>"core_AD_plasma_biomarkers"</code> this predicts all 75 module scores from Age, Gender, and the 8 core plasma biomarkers used in the original analysis. This requires the <code>glmnet</code> and <code>joinet</code> packages.</p>
-<p>The 8 biomarker columns (suffixed <code>_norm</code>) must already be rank-based inverse-normal transformed (e.g. via <code>RNOmni::RankNorm()</code>) relative to your own reference cohort — this transform is inherently relative to the distribution it’s computed against, so <code><a href="reference/predict_WSS.html">predict_WSS()</a></code> does not attempt it for you.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  Age <span class="op">=</span> <span class="fl">72</span>,</span>
-<span>  Gender <span class="op">=</span> <span class="fl">1</span>, <span class="co"># 1 = male, 0 = not male</span></span>
-<span>  PlasmaPTau181_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmaAB142P_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmaAB140P_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmaABRatio_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmapTau217_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmapTau217_AB42Ratio_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmaGFAP_norm <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  PlasmaNfL_norm <span class="op">=</span> <span class="fl">0</span></span>
+<p>The 8 biomarker columns (suffixed <code>_norm</code>) must already be rank-based inverse-normal transformed before calling <code><a href="reference/predict_WSS.html">predict_WSS()</a></code>. <code><a href="reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> builds these columns from raw biomarker values using one of two methods:</p>
+<ul>
+<li>
+<code>method = "project"</code> (default) — project each raw value onto a bundled reference distribution via <code><a href="reference/project_rank_norm.html">project_rank_norm()</a></code>. Works for a single new patient or a small/differently-distributed cohort, since each value is scored independently against the fixed reference.</li>
+<li>
+<code>method = "self"</code> — rank-normalize (<code><a href="https://rdrr.io/pkg/RNOmni/man/RankNorm.html" class="external-link">RNOmni::RankNorm()</a></code>) within your own batch, if you have a sizeable cohort of your own with a distribution you’re comfortable normalizing against directly instead of the bundled reference. Requires multiple samples, since a rank transform needs multiple values to rank against.</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns.</span></span>
+<span><span class="co"># Works for a single patient (method = "project" is the default):</span></span>
+<span><span class="va">raw_biomarkers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  PlasmaPTau181 <span class="op">=</span> <span class="fl">1.5</span>, PlasmaAB142P <span class="op">=</span> <span class="fl">25</span>, PlasmaAB140P <span class="op">=</span> <span class="fl">300</span>, PlasmaABRatio <span class="op">=</span> <span class="fl">0.09</span>,</span>
+<span>  PlasmapTau217 <span class="op">=</span> <span class="fl">0.3</span>, PlasmapTau217_AB42Ratio <span class="op">=</span> <span class="fl">0.012</span>, PlasmaGFAP <span class="op">=</span> <span class="fl">60</span>, PlasmaNfL <span class="op">=</span> <span class="fl">22</span></span>
 <span><span class="op">)</span></span>
+<span><span class="va">normalized</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers</a></span><span class="op">(</span><span class="va">raw_biomarkers</span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">72</span>, Gender <span class="op">=</span> <span class="fl">1</span>, <span class="va">normalized</span><span class="op">)</span> <span class="co"># Gender: 1 = male, 0 = not male</span></span>
 <span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/predict_WSS.html">predict_WSS</a></span><span class="op">(</span><span class="va">newdata</span><span class="op">)</span></span>
 <span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span></span></code></pre></div>
 </div>

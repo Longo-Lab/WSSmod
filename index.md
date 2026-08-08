@@ -92,27 +92,35 @@ module scores from Age, Gender, and the 8 core plasma biomarkers used in
 the original analysis. This requires the `glmnet` and `joinet` packages.
 
 The 8 biomarker columns (suffixed `_norm`) must already be rank-based
-inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) relative to
-your own reference cohort — this transform is inherently relative to the
-distribution it’s computed against, so
-[`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md)
-does not attempt it for you.
+inverse-normal transformed before calling
+[`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md).
+[`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md)
+builds these columns from raw biomarker values using one of two methods:
+
+- `method = "project"` (default) — project each raw value onto a bundled
+  reference distribution via
+  [`project_rank_norm()`](https://Longo-Lab.github.io/WSSmod/reference/project_rank_norm.md).
+  Works for a single new patient or a small/differently-distributed
+  cohort, since each value is scored independently against the fixed
+  reference.
+- `method = "self"` — rank-normalize
+  ([`RNOmni::RankNorm()`](https://rdrr.io/pkg/RNOmni/man/RankNorm.html))
+  within your own batch, if you have a sizeable cohort of your own with
+  a distribution you’re comfortable normalizing against directly instead
+  of the bundled reference. Requires multiple samples, since a rank
+  transform needs multiple values to rank against.
 
 ``` r
 
-newdata <- data.frame(
-  Age = 72,
-  Gender = 1, # 1 = male, 0 = not male
-  PlasmaPTau181_norm = 0,
-  PlasmaAB142P_norm = 0,
-  PlasmaAB140P_norm = 0,
-  PlasmaABRatio_norm = 0,
-  PlasmapTau217_norm = 0,
-  PlasmapTau217_AB42Ratio_norm = 0,
-  PlasmaGFAP_norm = 0,
-  PlasmaNfL_norm = 0
+# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns.
+# Works for a single patient (method = "project" is the default):
+raw_biomarkers <- data.frame(
+  PlasmaPTau181 = 1.5, PlasmaAB142P = 25, PlasmaAB140P = 300, PlasmaABRatio = 0.09,
+  PlasmapTau217 = 0.3, PlasmapTau217_AB42Ratio = 0.012, PlasmaGFAP = 60, PlasmaNfL = 22
 )
+normalized <- normalize_wss_biomarkers(raw_biomarkers)
 
+newdata <- cbind(Age = 72, Gender = 1, normalized) # Gender: 1 = male, 0 = not male
 pred <- predict_WSS(newdata)
 pred$meta
 ```

@@ -27,11 +27,10 @@ predict_WSS(newdata, prebuilt = "core_AD_plasma_biomarkers", type = "response")
   `PlasmaGFAP_norm`, `PlasmaNfL_norm`).
 
   **The `_norm` biomarker columns must already be rank-based
-  inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) relative to
-  your own reference cohort before calling this function.** This
-  transform is inherently relative to the distribution it's computed
-  against, so it cannot be done correctly for a single new sample in
-  isolation, and this function does not attempt it for you.
+  inverse-normal transformed before calling this function** – see
+  [`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md)
+  to build them from raw biomarker values, including for a single new
+  patient.
 
 - prebuilt:
 
@@ -53,6 +52,7 @@ by the model's `outcomes`).
 
 ## See also
 
+[`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md),
 [`load_prebuilt_wss_model()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss_model.md),
 [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
 
@@ -60,18 +60,11 @@ by the model's `outcomes`).
 
 ``` r
 if (FALSE) { # \dontrun{
-newdata <- data.frame(
-  Age = 72,
-  Gender = 1,
-  PlasmaPTau181_norm = 0,
-  PlasmaAB142P_norm = 0,
-  PlasmaAB140P_norm = 0,
-  PlasmaABRatio_norm = 0,
-  PlasmapTau217_norm = 0,
-  PlasmapTau217_AB42Ratio_norm = 0,
-  PlasmaGFAP_norm = 0,
-  PlasmaNfL_norm = 0
-)
+# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker
+# columns. Works for a single patient too.
+normalized <- normalize_wss_biomarkers(raw_biomarkers)
+
+newdata <- cbind(Age = ages, Gender = genders, normalized)
 pred <- predict_WSS(newdata)
 pred$meta
 } # }
