@@ -100,23 +100,33 @@ biomarkers used in the original analysis. This requires the `glmnet` and
 `joinet` packages.
 
 The 8 biomarker columns (suffixed `_norm`) must already be rank-based
-inverse-normal transformed (e.g. via `RNOmni::RankNorm()`) **across the
-new cohort you are predicting on**. Because a rank transform needs
-multiple values to rank against, `predict_WSS()` is designed to predict
-on a batch/cohort of new samples together, not a single new patient in
-isolation — this function does not attempt the transform for you.
+inverse-normal transformed before calling `predict_WSS()`.
+`normalize_wss_biomarkers()` builds these columns from raw biomarker
+values using one of two methods:
+
+  - `method = "project"` (default) — project each raw value onto a
+    bundled reference distribution via `project_rank_norm()`. Works for
+    a single new patient or a small/differently-distributed cohort,
+    since each value is scored independently against the fixed
+    reference.
+  - `method = "self"` — rank-normalize (`RNOmni::RankNorm()`) within
+    your own batch, if you have a sizeable cohort of your own with a
+    distribution you’re comfortable normalizing against directly instead
+    of the bundled reference. Requires multiple samples, since a rank
+    transform needs multiple values to rank against.
+
+<!-- end list -->
 
 ``` r
-# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns
-normalized <- as.data.frame(lapply(raw_biomarkers, RNOmni::RankNorm))
-names(normalized) <- paste0(names(normalized), "_norm")
-
-newdata <- cbind(
-  Age = ages,
-  Gender = genders, # 1 = male, 0 = not male
-  normalized
+# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker columns.
+# Works for a single patient (method = "project" is the default):
+raw_biomarkers <- data.frame(
+  PlasmaPTau181 = 1.5, PlasmaAB142P = 25, PlasmaAB140P = 300, PlasmaABRatio = 0.09,
+  PlasmapTau217 = 0.3, PlasmapTau217_AB42Ratio = 0.012, PlasmaGFAP = 60, PlasmaNfL = 22
 )
+normalized <- normalize_wss_biomarkers(raw_biomarkers)
 
+newdata <- cbind(Age = 72, Gender = 1, normalized) # Gender: 1 = male, 0 = not male
 pred <- predict_WSS(newdata)
 pred$meta
 ```

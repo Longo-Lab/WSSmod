@@ -16,12 +16,9 @@
 #'   `PlasmapTau217_AB42Ratio_norm`, `PlasmaGFAP_norm`, `PlasmaNfL_norm`).
 #'
 #'   **The `_norm` biomarker columns must already be rank-based
-#'   inverse-normal transformed (e.g. via [RNOmni::RankNorm()]) across the
-#'   new cohort you are predicting on before calling this function.** Because
-#'   a rank transform requires multiple values to rank against, this means
-#'   `predict_WSS()` is designed for predicting on a batch/cohort of new
-#'   samples together, not a single new patient in isolation -- this
-#'   function does not attempt the transform for you.
+#'   inverse-normal transformed before calling this function** -- see
+#'   [normalize_wss_biomarkers()] to build them from raw biomarker values,
+#'   including for a single new patient.
 #' @param prebuilt Name of a prebuilt reference set. See
 #'   [list_prebuilt_wss()] for available options.
 #' @param type Prediction type passed to `predict.joinet()`: `"response"`
@@ -32,16 +29,14 @@
 #'   sample (row names taken from `newdata`, if present) and one column per
 #'   module (named by the model's `outcomes`).
 #'
-#' @seealso [load_prebuilt_wss_model()], [calculate_WSS()]
+#' @seealso [normalize_wss_biomarkers()], [load_prebuilt_wss_model()],
+#'   [calculate_WSS()]
 #'
 #' @examples
 #' \dontrun{
-#' # newdata should cover a batch/cohort of new samples, not a single
-#' # patient in isolation, since RankNorm needs multiple values to rank
-#' # against. Here, raw_biomarkers is a data.frame with one row per sample
-#' # and the 8 raw (un-normalized) biomarker columns.
-#' normalized <- as.data.frame(lapply(raw_biomarkers, RNOmni::RankNorm))
-#' names(normalized) <- paste0(names(normalized), "_norm")
+#' # raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker
+#' # columns. Works for a single patient too.
+#' normalized <- normalize_wss_biomarkers(raw_biomarkers)
 #'
 #' newdata <- cbind(Age = ages, Gender = genders, normalized)
 #' pred <- predict_WSS(newdata)

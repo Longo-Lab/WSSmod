@@ -2,9 +2,12 @@
 
 export(calculate_WSS)
 export(list_prebuilt_wss)
+export(load_prebuilt_biomarker_reference)
 export(load_prebuilt_wss)
 export(load_prebuilt_wss_model)
+export(normalize_wss_biomarkers)
 export(predict_WSS)
+export(project_rank_norm)
 export(wss_prebuilt_terms)
 import(data.table)
 importFrom(data.table,fread)

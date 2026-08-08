@@ -17,12 +17,9 @@ least) the columns required by the model; see \code{x_cols} in
 \code{PlasmapTau217_AB42Ratio_norm}, \code{PlasmaGFAP_norm}, \code{PlasmaNfL_norm}).
 
 \strong{The \verb{_norm} biomarker columns must already be rank-based
-inverse-normal transformed (e.g. via \code{\link[RNOmni:RankNorm]{RNOmni::RankNorm()}}) across the
-new cohort you are predicting on before calling this function.} Because
-a rank transform requires multiple values to rank against, this means
-\code{predict_WSS()} is designed for predicting on a batch/cohort of new
-samples together, not a single new patient in isolation -- this
-function does not attempt the transform for you.}
+inverse-normal transformed before calling this function} -- see
+\code{\link[=normalize_wss_biomarkers]{normalize_wss_biomarkers()}} to build them from raw biomarker values,
+including for a single new patient.}
 
 \item{prebuilt}{Name of a prebuilt reference set. See
 \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}} for available options.}
@@ -45,12 +42,9 @@ the original analysis.
 }
 \examples{
 \dontrun{
-# newdata should cover a batch/cohort of new samples, not a single
-# patient in isolation, since RankNorm needs multiple values to rank
-# against. Here, raw_biomarkers is a data.frame with one row per sample
-# and the 8 raw (un-normalized) biomarker columns.
-normalized <- as.data.frame(lapply(raw_biomarkers, RNOmni::RankNorm))
-names(normalized) <- paste0(names(normalized), "_norm")
+# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker
+# columns. Works for a single patient too.
+normalized <- normalize_wss_biomarkers(raw_biomarkers)
 
 newdata <- cbind(Age = ages, Gender = genders, normalized)
 pred <- predict_WSS(newdata)
@@ -59,5 +53,6 @@ pred$meta
 
 }
 \seealso{
-\code{\link[=load_prebuilt_wss_model]{load_prebuilt_wss_model()}}, \code{\link[=calculate_WSS]{calculate_WSS()}}
+\code{\link[=normalize_wss_biomarkers]{normalize_wss_biomarkers()}}, \code{\link[=load_prebuilt_wss_model]{load_prebuilt_wss_model()}},
+\code{\link[=calculate_WSS]{calculate_WSS()}}
 }

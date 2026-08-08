@@ -1,12 +1,15 @@
 # Registry of prebuilt WSS reference sets shipped in inst/extdata.
 # Each entry names the scores file (module/protein weighting table, required),
-# an optional terms file (human-readable module labels), and an optional
-# model file (a fitted joinet prediction model, see predict_WSS()).
+# an optional terms file (human-readable module labels), an optional model
+# file (a fitted joinet prediction model, see predict_WSS()), and an optional
+# biomarker_reference file (see load_prebuilt_biomarker_reference() and
+# normalize_wss_biomarkers()).
 .wss_prebuilt_registry <- list(
   core_AD_plasma_biomarkers = list(
     scores = "core_AD_plasma_biomarkers.STRING_merged_scaled_scores.csv",
     terms = "core_AD_plasma_biomarkers.STRING_INT_WSS_terms_Zsum.csv",
-    model = "core_AD_plasma_biomarkers.prediction_model.rds"
+    model = "core_AD_plasma_biomarkers.prediction_model.rds",
+    biomarker_reference = "core_AD_plasma_biomarkers.baseline_biomarker_reference.csv"
   )
 )
 
@@ -117,4 +120,44 @@ load_prebuilt_wss_model <- function(prebuilt = "core_AD_plasma_biomarkers") {
   }
 
   readRDS(.wss_prebuilt_path(entry$model))
+}
+
+#' Load a Prebuilt Biomarker Reference Distribution
+#'
+#' Some prebuilt reference sets ship a baseline biomarker reference
+#' distribution used by [normalize_wss_biomarkers()] (`method = "project"`)
+#' to rank-normalize new raw biomarker values without needing a sizeable
+#' cohort of your own. Each biomarker's reference values are drawn from the
+#' real baseline cohort, but **independently randomly shuffled** so that no
+#' two values across different biomarkers can be attributed to the same
+#' original subject. This preserves each biomarker's marginal distribution
+#' exactly (every value, tie, and extreme is real) while destroying the
+#' joint/multivariate fingerprint that carries re-identification risk.
+#'
+#' Because of this, **the returned reference has no valid joint structure**
+#' — inter-biomarker correlations are deliberately destroyed. Only use it
+#' for independent per-biomarker operations (rank/quantile lookups), never
+#' for anything requiring multivariate relationships (e.g. correlation or
+#' joint modeling).
+#'
+#' @param prebuilt Name of a prebuilt reference set. See
+#'   [list_prebuilt_wss()] for available options.
+#'
+#' @return A data.table with columns `biomarker` and `value` (long format,
+#'   one row per reference observation; biomarkers have differing numbers of
+#'   rows due to differing missingness in the original cohort), or `NULL` if
+#'   the given reference set has no associated biomarker reference.
+#'
+#' @seealso [normalize_wss_biomarkers()], [project_rank_norm()]
+#'
+#' @importFrom data.table fread
+#' @export
+load_prebuilt_biomarker_reference <- function(prebuilt = "core_AD_plasma_biomarkers") {
+  entry <- .wss_prebuilt_entry(prebuilt)
+
+  if (is.null(entry$biomarker_reference)) {
+    return(NULL)
+  }
+
+  fread(.wss_prebuilt_path(entry$biomarker_reference))
 }
