@@ -62,12 +62,11 @@ the original analysis.</p>
 least) the columns required by the model; see <code>x_cols</code> in
 <code><a href="load_prebuilt_wss_model.html">load_prebuilt_wss_model()</a></code> for the exact set and order. For
 <code>"core_AD_plasma_biomarkers"</code> this is <code>Age</code> (raw years), <code>Gender</code>
-(numeric, <code>1</code> = male, <code>0</code> = not male), and 8 biomarker columns suffixed
-<code>_norm</code> (<code>PlasmaPTau181_norm</code>, <code>PlasmaAB142P_norm</code>, <code>PlasmaAB140P_norm</code>,
-<code>PlasmaABRatio_norm</code>, <code>PlasmapTau217_norm</code>,
-<code>PlasmapTau217_AB42Ratio_norm</code>, <code>PlasmaGFAP_norm</code>, <code>PlasmaNfL_norm</code>).</p>
-<p><strong>The <code>_norm</code> biomarker columns must already be rank-based
-inverse-normal transformed before calling this function</strong> – see
+(numeric, <code>1</code> = male, <code>0</code> = not male), and the 8 core biomarkers
+(<code>PlasmaPTau181</code>, <code>PlasmaAB142P</code>, <code>PlasmaAB140P</code>, <code>PlasmaABRatio</code>,
+<code>PlasmapTau217</code>, <code>PlasmapTau217_AB42Ratio</code>, <code>PlasmaGFAP</code>, <code>PlasmaNfL</code>).</p>
+<p><strong>The biomarker columns must already be rank-based inverse-normal
+transformed before calling this function</strong> – see
 <code><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> to build them from raw biomarker values,
 including for a single new patient.</p></dd>
 

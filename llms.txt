@@ -91,11 +91,12 @@ proteomic panel. For `"core_AD_plasma_biomarkers"` this predicts all 75
 module scores from Age, Gender, and the 8 core plasma biomarkers used in
 the original analysis. This requires the `glmnet` and `joinet` packages.
 
-The 8 biomarker columns (suffixed `_norm`) must already be rank-based
-inverse-normal transformed before calling
+The 8 biomarker columns must already be rank-based inverse-normal
+transformed before calling
 [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md).
 [`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md)
-builds these columns from raw biomarker values using one of two methods:
+builds these columns (keeping the same column names) from raw biomarker
+values using one of two methods:
 
 - `method = "project"` (default) — project each raw value onto a bundled
   reference distribution via

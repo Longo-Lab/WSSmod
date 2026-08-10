@@ -117,7 +117,7 @@
 <h2 id="predicting-module-scores-from-core-biomarkers">Predicting module scores from core biomarkers<a class="anchor" aria-label="anchor" href="#predicting-module-scores-from-core-biomarkers"></a>
 </h2>
 <p><code><a href="reference/predict_WSS.html">predict_WSS()</a></code> predicts module scores for a prebuilt reference set from a small set of covariates, using a fitted <code>joinet</code> model, without needing the full proteomic panel. For <code>"core_AD_plasma_biomarkers"</code> this predicts all 75 module scores from Age, Gender, and the 8 core plasma biomarkers used in the original analysis. This requires the <code>glmnet</code> and <code>joinet</code> packages.</p>
-<p>The 8 biomarker columns (suffixed <code>_norm</code>) must already be rank-based inverse-normal transformed before calling <code><a href="reference/predict_WSS.html">predict_WSS()</a></code>. <code><a href="reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> builds these columns from raw biomarker values using one of two methods:</p>
+<p>The 8 biomarker columns must already be rank-based inverse-normal transformed before calling <code><a href="reference/predict_WSS.html">predict_WSS()</a></code>. <code><a href="reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> builds these columns (keeping the same column names) from raw biomarker values using one of two methods:</p>
 <ul>
 <li>
 <code>method = "project"</code> (default) — project each raw value onto a bundled reference distribution via <code><a href="reference/project_rank_norm.html">project_rank_norm()</a></code>. Works for a single new patient or a small/differently-distributed cohort, since each value is scored independently against the fixed reference.</li>

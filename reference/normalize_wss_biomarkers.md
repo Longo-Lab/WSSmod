@@ -1,9 +1,12 @@
 # Normalize Raw Biomarker Values for predict_WSS()
 
-Builds the rank-based inverse-normal-transformed (`_norm`-suffixed)
-biomarker columns
+Builds the rank-based inverse-normal-transformed biomarker columns
 [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md)
-requires, from raw biomarker values, using one of two methods.
+requires, from raw biomarker values, using one of two methods. Output
+columns keep the same names as the input columns (e.g. `PlasmaPTau181`
+stays `PlasmaPTau181`) –
+[`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md)
+reads whatever column names its underlying model actually expects.
 
 ## Usage
 
@@ -54,8 +57,8 @@ normalize_wss_biomarkers(
 
 ## Value
 
-A data.frame with one `_norm`-suffixed column per input biomarker
-column, row names preserved from `raw_biomarkers`. Combine with
+A data.frame with one normalized column per input biomarker column (same
+names as `raw_biomarkers`), row names preserved. Combine with
 `Age`/`Gender` columns and pass to
 [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md).
 
@@ -70,6 +73,6 @@ column, row names preserved from `raw_biomarkers`. Combine with
 ``` r
 raw_biomarkers <- data.frame(PlasmaPTau181 = 1.5, PlasmaNfL = 20)
 normalize_wss_biomarkers(raw_biomarkers)
-#>   PlasmaPTau181_norm PlasmaNfL_norm
-#> 1         -0.2548389    -0.02426497
+#>   PlasmaPTau181    PlasmaNfL
+#> 1    -0.2168629 -0.009634851
 ```
