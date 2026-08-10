@@ -34,14 +34,16 @@ rank against.}
 }}
 }
 \value{
-A data.frame with one \verb{_norm}-suffixed column per input
-biomarker column, row names preserved from \code{raw_biomarkers}. Combine
+A data.frame with one normalized column per input biomarker
+column (same names as \code{raw_biomarkers}), row names preserved. Combine
 with \code{Age}/\code{Gender} columns and pass to \code{\link[=predict_WSS]{predict_WSS()}}.
 }
 \description{
-Builds the rank-based inverse-normal-transformed (\verb{_norm}-suffixed)
-biomarker columns \code{\link[=predict_WSS]{predict_WSS()}} requires, from raw biomarker values,
-using one of two methods.
+Builds the rank-based inverse-normal-transformed biomarker columns
+\code{\link[=predict_WSS]{predict_WSS()}} requires, from raw biomarker values, using one of two
+methods. Output columns keep the same names as the input columns (e.g.
+\code{PlasmaPTau181} stays \code{PlasmaPTau181}) -- \code{\link[=predict_WSS]{predict_WSS()}} reads whatever
+column names its underlying model actually expects.
 }
 \examples{
 raw_biomarkers <- data.frame(PlasmaPTau181 = 1.5, PlasmaNfL = 20)

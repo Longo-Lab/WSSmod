@@ -99,9 +99,9 @@ predicts all 75 module scores from Age, Gender, and the 8 core plasma
 biomarkers used in the original analysis. This requires the `glmnet` and
 `joinet` packages.
 
-The 8 biomarker columns (suffixed `_norm`) must already be rank-based
-inverse-normal transformed before calling `predict_WSS()`.
-`normalize_wss_biomarkers()` builds these columns from raw biomarker
+The 8 biomarker columns must already be rank-based inverse-normal
+transformed before calling `predict_WSS()`. `normalize_wss_biomarkers()`
+builds these columns (keeping the same column names) from raw biomarker
 values using one of two methods:
 
   - `method = "project"` (default) — project each raw value onto a

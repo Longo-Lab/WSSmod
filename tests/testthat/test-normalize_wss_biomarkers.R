@@ -22,10 +22,7 @@ test_that("normalize_wss_biomarkers(method = 'project') works on a single sample
   out <- normalize_wss_biomarkers(raw_biomarkers, method = "project")
 
   expect_equal(nrow(out), 1)
-  expect_equal(
-    sort(names(out)),
-    sort(paste0(names(raw_biomarkers), "_norm"))
-  )
+  expect_equal(sort(names(out)), sort(names(raw_biomarkers)))
   expect_true(all(vapply(out, is.finite, logical(1))))
 })
 
@@ -62,9 +59,9 @@ test_that("normalize_wss_biomarkers(method = 'self') rank-normalizes within the 
   out <- normalize_wss_biomarkers(raw_biomarkers, method = "self")
 
   expect_equal(nrow(out), 5)
-  expect_equal(names(out), c("PlasmaPTau181_norm", "PlasmaNfL_norm"))
+  expect_equal(names(out), c("PlasmaPTau181", "PlasmaNfL"))
   # Monotonic increasing input should give monotonic increasing rank-norm output
-  expect_true(all(diff(out$PlasmaPTau181_norm) > 0))
+  expect_true(all(diff(out$PlasmaPTau181) > 0))
 })
 
 test_that("normalize_wss_biomarkers errors on non-numeric columns", {

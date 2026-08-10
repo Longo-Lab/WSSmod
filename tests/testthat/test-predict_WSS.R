@@ -7,9 +7,9 @@ test_that("load_prebuilt_wss_model returns the bundled joinet model for the defa
   expect_equal(
     model_info$x_cols,
     c(
-      "Age", "Gender", "PlasmaPTau181_norm", "PlasmaAB142P_norm",
-      "PlasmaAB140P_norm", "PlasmaABRatio_norm", "PlasmapTau217_norm",
-      "PlasmapTau217_AB42Ratio_norm", "PlasmaGFAP_norm", "PlasmaNfL_norm"
+      "Age", "Gender", "PlasmaPTau181", "PlasmaAB142P",
+      "PlasmaAB140P", "PlasmaABRatio", "PlasmapTau217",
+      "PlasmapTau217_AB42Ratio", "PlasmaGFAP", "PlasmaNfL"
     )
   )
   expect_length(model_info$outcomes, 75)
@@ -37,9 +37,9 @@ test_that("predict_WSS errors when a required column is non-numeric", {
 
   newdata <- data.frame(
     Age = 72, Gender = "M",
-    PlasmaPTau181_norm = 0, PlasmaAB142P_norm = 0, PlasmaAB140P_norm = 0,
-    PlasmaABRatio_norm = 0, PlasmapTau217_norm = 0,
-    PlasmapTau217_AB42Ratio_norm = 0, PlasmaGFAP_norm = 0, PlasmaNfL_norm = 0
+    PlasmaPTau181 = 0, PlasmaAB142P = 0, PlasmaAB140P = 0,
+    PlasmaABRatio = 0, PlasmapTau217 = 0,
+    PlasmapTau217_AB42Ratio = 0, PlasmaGFAP = 0, PlasmaNfL = 0
   )
 
   expect_error(predict_WSS(newdata), "must be numeric")
@@ -52,14 +52,14 @@ test_that("predict_WSS returns base and meta predictions for all outcomes", {
   newdata <- data.frame(
     Age = c(72, 65),
     Gender = c(1, 0),
-    PlasmaPTau181_norm = c(0, 0.5),
-    PlasmaAB142P_norm = c(0, -0.5),
-    PlasmaAB140P_norm = c(0, 0.2),
-    PlasmaABRatio_norm = c(0, -0.2),
-    PlasmapTau217_norm = c(0, 0.1),
-    PlasmapTau217_AB42Ratio_norm = c(0, -0.1),
-    PlasmaGFAP_norm = c(0, 0.3),
-    PlasmaNfL_norm = c(0, -0.3),
+    PlasmaPTau181 = c(0, 0.5),
+    PlasmaAB142P = c(0, -0.5),
+    PlasmaAB140P = c(0, 0.2),
+    PlasmaABRatio = c(0, -0.2),
+    PlasmapTau217 = c(0, 0.1),
+    PlasmapTau217_AB42Ratio = c(0, -0.1),
+    PlasmaGFAP = c(0, 0.3),
+    PlasmaNfL = c(0, -0.3),
     row.names = c("subject1", "subject2")
   )
 
@@ -112,7 +112,6 @@ test_that("predict_WSS with RankNorm applied within a synthetic batch is determi
   ))
 
   normalized <- as.data.frame(lapply(raw, RNOmni::RankNorm))
-  names(normalized) <- paste0(names(normalized), "_norm")
 
   newdata <- cbind(
     Age = round(runif(20, 55, 90)),

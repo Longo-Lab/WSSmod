@@ -10,13 +10,12 @@
 #'   least) the columns required by the model; see `x_cols` in
 #'   [load_prebuilt_wss_model()] for the exact set and order. For
 #'   `"core_AD_plasma_biomarkers"` this is `Age` (raw years), `Gender`
-#'   (numeric, `1` = male, `0` = not male), and 8 biomarker columns suffixed
-#'   `_norm` (`PlasmaPTau181_norm`, `PlasmaAB142P_norm`, `PlasmaAB140P_norm`,
-#'   `PlasmaABRatio_norm`, `PlasmapTau217_norm`,
-#'   `PlasmapTau217_AB42Ratio_norm`, `PlasmaGFAP_norm`, `PlasmaNfL_norm`).
+#'   (numeric, `1` = male, `0` = not male), and the 8 core biomarkers
+#'   (`PlasmaPTau181`, `PlasmaAB142P`, `PlasmaAB140P`, `PlasmaABRatio`,
+#'   `PlasmapTau217`, `PlasmapTau217_AB42Ratio`, `PlasmaGFAP`, `PlasmaNfL`).
 #'
-#'   **The `_norm` biomarker columns must already be rank-based
-#'   inverse-normal transformed before calling this function** -- see
+#'   **The biomarker columns must already be rank-based inverse-normal
+#'   transformed before calling this function** -- see
 #'   [normalize_wss_biomarkers()] to build them from raw biomarker values,
 #'   including for a single new patient.
 #' @param prebuilt Name of a prebuilt reference set. See

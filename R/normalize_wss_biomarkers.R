@@ -1,8 +1,10 @@
 #' Normalize Raw Biomarker Values for predict_WSS()
 #'
-#' Builds the rank-based inverse-normal-transformed (`_norm`-suffixed)
-#' biomarker columns [predict_WSS()] requires, from raw biomarker values,
-#' using one of two methods.
+#' Builds the rank-based inverse-normal-transformed biomarker columns
+#' [predict_WSS()] requires, from raw biomarker values, using one of two
+#' methods. Output columns keep the same names as the input columns (e.g.
+#' `PlasmaPTau181` stays `PlasmaPTau181`) -- [predict_WSS()] reads whatever
+#' column names its underlying model actually expects.
 #'
 #' @param raw_biomarkers A data.frame or matrix, one row per sample, with
 #'   columns named by the raw (unsuffixed) biomarker names (e.g.
@@ -24,8 +26,8 @@
 #'       rank against.}
 #'   }
 #'
-#' @return A data.frame with one `_norm`-suffixed column per input
-#'   biomarker column, row names preserved from `raw_biomarkers`. Combine
+#' @return A data.frame with one normalized column per input biomarker
+#'   column (same names as `raw_biomarkers`), row names preserved. Combine
 #'   with `Age`/`Gender` columns and pass to [predict_WSS()].
 #'
 #' @seealso [predict_WSS()], [project_rank_norm()],
@@ -86,7 +88,7 @@ normalize_wss_biomarkers <- function(raw_biomarkers, prebuilt = "core_AD_plasma_
   }
 
   normalized <- as.data.frame(normalized)
-  names(normalized) <- paste0(biomarkers, "_norm")
+  names(normalized) <- biomarkers
   rownames(normalized) <- rownames(raw_biomarkers)
 
   normalized

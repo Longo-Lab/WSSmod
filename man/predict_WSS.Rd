@@ -11,13 +11,12 @@ predict_WSS(newdata, prebuilt = "core_AD_plasma_biomarkers", type = "response")
 least) the columns required by the model; see \code{x_cols} in
 \code{\link[=load_prebuilt_wss_model]{load_prebuilt_wss_model()}} for the exact set and order. For
 \code{"core_AD_plasma_biomarkers"} this is \code{Age} (raw years), \code{Gender}
-(numeric, \code{1} = male, \code{0} = not male), and 8 biomarker columns suffixed
-\verb{_norm} (\code{PlasmaPTau181_norm}, \code{PlasmaAB142P_norm}, \code{PlasmaAB140P_norm},
-\code{PlasmaABRatio_norm}, \code{PlasmapTau217_norm},
-\code{PlasmapTau217_AB42Ratio_norm}, \code{PlasmaGFAP_norm}, \code{PlasmaNfL_norm}).
+(numeric, \code{1} = male, \code{0} = not male), and the 8 core biomarkers
+(\code{PlasmaPTau181}, \code{PlasmaAB142P}, \code{PlasmaAB140P}, \code{PlasmaABRatio},
+\code{PlasmapTau217}, \code{PlasmapTau217_AB42Ratio}, \code{PlasmaGFAP}, \code{PlasmaNfL}).
 
-\strong{The \verb{_norm} biomarker columns must already be rank-based
-inverse-normal transformed before calling this function} -- see
+\strong{The biomarker columns must already be rank-based inverse-normal
+transformed before calling this function} -- see
 \code{\link[=normalize_wss_biomarkers]{normalize_wss_biomarkers()}} to build them from raw biomarker values,
 including for a single new patient.}
 
