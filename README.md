@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# WSSmod
+# WSSmod <a href="https://Longo-Lab.github.io/WSSmod/"><img src="man/figures/logo.png" align="right" height="138" alt="WSSmod website" /></a>
 
 <!-- badges: start -->
 

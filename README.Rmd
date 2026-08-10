@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# WSSmod
+# WSSmod <a href="https://Longo-Lab.github.io/WSSmod/"><img src="man/figures/logo.png" align="right" height="138" alt="WSSmod website" /></a>
 
 <!-- badges: start -->
 [![Version](https://img.shields.io/badge/version-`r read.dcf("DESCRIPTION")[1, "Version"]`-blue.svg)](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
