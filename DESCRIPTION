@@ -1,6 +1,6 @@
 Package: WSSmod
 Title: Weighted Sum of Scores for Protein Network Modules
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Robert", "Butler", , "rrbutler@stanford.edu", role = c("aut", "cre"))
 Description: Tools to construct Weighted Sum of Scores (WSS) module-level
