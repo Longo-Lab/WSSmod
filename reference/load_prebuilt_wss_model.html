@@ -71,6 +71,23 @@ reference set has no associated prediction model.</p>
     <div class="dont-index"><p><code><a href="predict_WSS.html">predict_WSS()</a></code>, <code><a href="list_prebuilt_wss.html">list_prebuilt_wss()</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">model_info</span> <span class="op">&lt;-</span> <span class="fu">load_prebuilt_wss_model</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">model_info</span><span class="op">$</span><span class="va">variant</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Biomarkers_Age_Sex"</span>
+<span class="r-in"><span><span class="va">model_info</span><span class="op">$</span><span class="va">x_cols</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Age"                     "Gender"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "PlasmaPTau181"           "PlasmaAB142P"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "PlasmaAB140P"            "PlasmaABRatio"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "PlasmapTau217"           "PlasmapTau217_AB42Ratio"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "PlasmaGFAP"              "PlasmaNfL"              </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">model_info</span><span class="op">$</span><span class="va">outcomes</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Merged.M17"        "Merged.M7"         "Merged.M4"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "PlasmaPTau181.M26" "Merged.M8"         "Merged.M1"        </span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

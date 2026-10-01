@@ -58,13 +58,22 @@ by the model's `outcomes`).
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker
-# columns. Works for a single patient too.
-normalized <- normalize_wss_biomarkers(raw_biomarkers)
+if (requireNamespace("glmnet", quietly = TRUE) &&
+    requireNamespace("joinet", quietly = TRUE)) {
+  # Simulated raw biomarkers; works for a single patient too
+  raw_biomarkers <- wss_example_biomarkers[, -(1:2)]
+  normalized <- normalize_wss_biomarkers(raw_biomarkers)
 
-newdata <- cbind(Age = ages, Gender = genders, normalized)
-pred <- predict_WSS(newdata)
-pred$meta
-} # }
+  newdata <- cbind(
+    Age = wss_example_biomarkers$Age,
+    Gender = wss_example_biomarkers$Gender,
+    normalized
+  )
+  pred <- predict_WSS(newdata)
+  pred$meta[1:3, 1:4]
+}
+#>           Merged.M17  Merged.M7  Merged.M4 PlasmaPTau181.M26
+#> patient01  0.0699344 -0.1617110  0.1312342        -0.2210809
+#> patient02  0.1919225  0.0521312 -0.6218288         0.2495096
+#> patient03 -0.1928722  0.2029449  0.4536169         0.2990079
 ```

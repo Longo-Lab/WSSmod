@@ -18,5 +18,9 @@
   : Predict WSS Module Scores from Core Biomarkers
 - [`project_rank_norm()`](https://Longo-Lab.github.io/WSSmod/reference/project_rank_norm.md)
   : Project New Values onto a Frozen Rank-Normal Reference
+- [`wss_example_biomarkers`](https://Longo-Lab.github.io/WSSmod/reference/wss_example_biomarkers.md)
+  : Simulated Plasma Biomarkers for WSS Prediction Examples
+- [`wss_example_expression`](https://Longo-Lab.github.io/WSSmod/reference/wss_example_expression.md)
+  : Simulated Expression Matrix for WSS Examples
 - [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
   : Get Module Term Labels for a Prebuilt WSS Reference Set

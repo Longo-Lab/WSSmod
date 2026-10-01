@@ -156,6 +156,12 @@ disease progression.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      mod1      mod2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.3535534 0.7071068 </span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With no `result`, the default bundled reference set is used. The</span></span></span>
+<span class="r-in"><span><span class="co"># simulated example matrix has columns for all of its modules.</span></span></span>
+<span class="r-in"><span><span class="va">default_results</span> <span class="op">&lt;-</span> <span class="fu">calculate_WSS</span><span class="op">(</span><span class="va">wss_example_expression</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">default_results</span><span class="op">$</span><span class="va">scores</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50 75</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

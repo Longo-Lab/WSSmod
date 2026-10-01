@@ -49,6 +49,11 @@
 <code><a href="../reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> builds the rank-normalized biomarker inputs <code><a href="../reference/predict_WSS.html">predict_WSS()</a></code> requires from raw biomarker values, via either <code>method = "project"</code> (projecting onto a bundled, anonymized baseline reference distribution, using <code><a href="../reference/project_rank_norm.html">project_rank_norm()</a></code> – supports a single new patient) or <code>method = "self"</code> (rank-normalizing within your own cohort).</li>
 <li>
 <code><a href="../reference/project_rank_norm.html">project_rank_norm()</a></code> and <code><a href="../reference/load_prebuilt_biomarker_reference.html">load_prebuilt_biomarker_reference()</a></code> expose the underlying projection utility and reference distribution directly.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="example-data-0-1-0">Example data<a class="anchor" aria-label="anchor" href="#example-data-0-1-0"></a></h3>
+<ul><li>
+<code>wss_example_expression</code> and <code>wss_example_biomarkers</code> are small, fully simulated datasets (no participant data) for trying out <code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code>, <code><a href="../reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> and <code><a href="../reference/predict_WSS.html">predict_WSS()</a></code>.</li>
 </ul><p>The bundled model and reference data were verified end-to-end against the original analysis’s held-out follow-up cohort, reproducing published predictions to floating-point precision.</p>
 </div>
 </div>

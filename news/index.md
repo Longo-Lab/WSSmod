@@ -42,6 +42,15 @@ Initial versioned release.
   expose the underlying projection utility and reference distribution
   directly.
 
+### Example data
+
+- `wss_example_expression` and `wss_example_biomarkers` are small, fully
+  simulated datasets (no participant data) for trying out
+  [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md),
+  [`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md)
+  and
+  [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md).
+
 The bundled model and reference data were verified end-to-end against
 the original analysis’s held-out follow-up cohort, reproducing published
 predictions to floating-point precision.

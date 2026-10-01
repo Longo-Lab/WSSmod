@@ -122,4 +122,10 @@ print(module_results$summary_stats)
 print(module_results$module_sd)
 #>      mod1      mod2 
 #> 0.3535534 0.7071068 
+
+# With no `result`, the default bundled reference set is used. The
+# simulated example matrix has columns for all of its modules.
+default_results <- calculate_WSS(wss_example_expression)
+dim(default_results$scores)
+#> [1] 50 75
 ```

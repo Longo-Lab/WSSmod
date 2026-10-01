@@ -29,9 +29,8 @@ load_prebuilt_biomarker_reference(prebuilt = "core_AD_plasma_biomarkers")
 ## Value
 
 A data.table with columns `biomarker` and `value` (long format, one row
-per reference observation; biomarkers have differing numbers of rows due
-to differing missingness in the original cohort), or `NULL` if the given
-reference set has no associated biomarker reference.
+per reference observation), or `NULL` if the given reference set has no
+associated biomarker reference.
 
 ## Details
 
@@ -45,3 +44,17 @@ joint modeling).
 
 [`normalize_wss_biomarkers()`](https://Longo-Lab.github.io/WSSmod/reference/normalize_wss_biomarkers.md),
 [`project_rank_norm()`](https://Longo-Lab.github.io/WSSmod/reference/project_rank_norm.md)
+
+## Examples
+
+``` r
+ref <- load_prebuilt_biomarker_reference()
+table(ref$biomarker)
+#> 
+#>            PlasmaAB140P            PlasmaAB142P           PlasmaABRatio 
+#>                     389                     389                     389 
+#>              PlasmaGFAP               PlasmaNfL           PlasmaPTau181 
+#>                     389                     389                     389 
+#>           PlasmapTau217 PlasmapTau217_AB42Ratio 
+#>                     389                     389 
+```

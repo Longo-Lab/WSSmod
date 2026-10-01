@@ -32,3 +32,20 @@ has no associated prediction model.
 
 [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md),
 [`list_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/list_prebuilt_wss.md)
+
+## Examples
+
+``` r
+model_info <- load_prebuilt_wss_model()
+model_info$variant
+#> [1] "Biomarkers_Age_Sex"
+model_info$x_cols
+#>  [1] "Age"                     "Gender"                 
+#>  [3] "PlasmaPTau181"           "PlasmaAB142P"           
+#>  [5] "PlasmaAB140P"            "PlasmaABRatio"          
+#>  [7] "PlasmapTau217"           "PlasmapTau217_AB42Ratio"
+#>  [9] "PlasmaGFAP"              "PlasmaNfL"              
+head(model_info$outcomes)
+#> [1] "Merged.M17"        "Merged.M7"         "Merged.M4"        
+#> [4] "PlasmaPTau181.M26" "Merged.M8"         "Merged.M1"        
+```

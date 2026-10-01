@@ -3,6 +3,9 @@
 ## Authors
 
 - **Robert Butler**. Author, maintainer.
+  [](https://orcid.org/0000-0003-0200-8682)
+
+- **WSSmod authors**. Copyright holder.
 
 ## Citation
 

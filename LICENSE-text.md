@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: Robert Butler
+    COPYRIGHT HOLDER: WSSmod authors

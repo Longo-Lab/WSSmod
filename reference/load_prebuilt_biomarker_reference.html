@@ -77,9 +77,8 @@ joint/multivariate fingerprint that carries re-identification risk.</p>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A data.table with columns <code>biomarker</code> and <code>value</code> (long format,
-one row per reference observation; biomarkers have differing numbers of
-rows due to differing missingness in the original cohort), or <code>NULL</code> if
-the given reference set has no associated biomarker reference.</p>
+one row per reference observation), or <code>NULL</code> if the given reference set
+has no associated biomarker reference.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -94,6 +93,20 @@ joint modeling).</p>
     <div class="dont-index"><p><code><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code>, <code><a href="project_rank_norm.html">project_rank_norm()</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ref</span> <span class="op">&lt;-</span> <span class="fu">load_prebuilt_biomarker_reference</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">ref</span><span class="op">$</span><span class="va">biomarker</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            PlasmaAB140P            PlasmaAB142P           PlasmaABRatio </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     389                     389                     389 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              PlasmaGFAP               PlasmaNfL           PlasmaPTau181 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     389                     389                     389 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           PlasmapTau217 PlasmapTau217_AB42Ratio </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     389                     389 </span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
