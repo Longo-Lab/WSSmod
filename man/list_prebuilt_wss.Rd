@@ -13,3 +13,7 @@ A character vector of prebuilt reference set names usable as the
 \description{
 List Available Prebuilt WSS Reference Sets
 }
+\examples{
+list_prebuilt_wss()
+
+}

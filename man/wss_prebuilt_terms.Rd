@@ -19,3 +19,7 @@ Some prebuilt reference sets ship a companion table of human-readable
 term labels for each module, summarized from the underlying pathway
 enrichment used to build the module.
 }
+\examples{
+head(wss_prebuilt_terms())
+
+}

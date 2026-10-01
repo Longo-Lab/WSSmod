@@ -40,14 +40,19 @@ module scores from Age, Gender, and the 8 core plasma biomarkers used in
 the original analysis.
 }
 \examples{
-\dontrun{
-# raw_biomarkers: one row per sample, the 8 raw (un-normalized) biomarker
-# columns. Works for a single patient too.
-normalized <- normalize_wss_biomarkers(raw_biomarkers)
+if (requireNamespace("glmnet", quietly = TRUE) &&
+    requireNamespace("joinet", quietly = TRUE)) {
+  # Simulated raw biomarkers; works for a single patient too
+  raw_biomarkers <- wss_example_biomarkers[, -(1:2)]
+  normalized <- normalize_wss_biomarkers(raw_biomarkers)
 
-newdata <- cbind(Age = ages, Gender = genders, normalized)
-pred <- predict_WSS(newdata)
-pred$meta
+  newdata <- cbind(
+    Age = wss_example_biomarkers$Age,
+    Gender = wss_example_biomarkers$Gender,
+    normalized
+  )
+  pred <- predict_WSS(newdata)
+  pred$meta[1:3, 1:4]
 }
 
 }

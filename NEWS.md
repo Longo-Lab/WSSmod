@@ -29,6 +29,12 @@ Initial versioned release.
 * `project_rank_norm()` and `load_prebuilt_biomarker_reference()` expose
   the underlying projection utility and reference distribution directly.
 
+## Example data
+
+* `wss_example_expression` and `wss_example_biomarkers` are small, fully
+  simulated datasets (no participant data) for trying out `calculate_WSS()`,
+  `normalize_wss_biomarkers()` and `predict_WSS()`.
+
 The bundled model and reference data were verified end-to-end against the
 original analysis's held-out follow-up cohort, reproducing published
 predictions to floating-point precision.

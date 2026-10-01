@@ -12,9 +12,8 @@ load_prebuilt_biomarker_reference(prebuilt = "core_AD_plasma_biomarkers")
 }
 \value{
 A data.table with columns \code{biomarker} and \code{value} (long format,
-one row per reference observation; biomarkers have differing numbers of
-rows due to differing missingness in the original cohort), or \code{NULL} if
-the given reference set has no associated biomarker reference.
+one row per reference observation), or \code{NULL} if the given reference set
+has no associated biomarker reference.
 }
 \description{
 Some prebuilt reference sets ship a baseline biomarker reference
@@ -33,6 +32,11 @@ Because of this, \strong{the returned reference has no valid joint structure}
 for independent per-biomarker operations (rank/quantile lookups), never
 for anything requiring multivariate relationships (e.g. correlation or
 joint modeling).
+}
+\examples{
+ref <- load_prebuilt_biomarker_reference()
+table(ref$biomarker)
+
 }
 \seealso{
 \code{\link[=normalize_wss_biomarkers]{normalize_wss_biomarkers()}}, \code{\link[=project_rank_norm]{project_rank_norm()}}

@@ -49,9 +49,13 @@
 #'
 #' @seealso [calculate_WSS()], [list_prebuilt_wss()], [wss_prebuilt_terms()]
 #'
+#' @examples
+#' ref <- load_prebuilt_wss()
+#' head(ref[, c("module", "symbol", "mean_beta", "mean_alpha_scaled")])
+#'
 #' @importFrom data.table fread
 #' @export
-load_prebuilt_wss <- function(prebuilt = "core_AD_plasma_biomarkers") {
+load_prebuilt_wss <-function(prebuilt = "core_AD_plasma_biomarkers") {
   entry <- .wss_prebuilt_entry(prebuilt)
 
   result <- fread(.wss_prebuilt_path(entry$scores))
@@ -65,8 +69,11 @@ load_prebuilt_wss <- function(prebuilt = "core_AD_plasma_biomarkers") {
 #' @return A character vector of prebuilt reference set names usable as the
 #'   `prebuilt` argument of [calculate_WSS()] and [load_prebuilt_wss()].
 #'
+#' @examples
+#' list_prebuilt_wss()
+#'
 #' @export
-list_prebuilt_wss <- function() {
+list_prebuilt_wss <-function() {
   names(.wss_prebuilt_registry)
 }
 
@@ -82,9 +89,12 @@ list_prebuilt_wss <- function() {
 #' @return A data.table of module term labels, or `NULL` if the given
 #'   reference set has no associated terms file.
 #'
+#' @examples
+#' head(wss_prebuilt_terms())
+#'
 #' @importFrom data.table fread
 #' @export
-wss_prebuilt_terms <- function(prebuilt = "core_AD_plasma_biomarkers") {
+wss_prebuilt_terms <-function(prebuilt = "core_AD_plasma_biomarkers") {
   entry <- .wss_prebuilt_entry(prebuilt)
 
   if (is.null(entry$terms)) {
@@ -111,8 +121,14 @@ wss_prebuilt_terms <- function(prebuilt = "core_AD_plasma_biomarkers") {
 #'
 #' @seealso [predict_WSS()], [list_prebuilt_wss()]
 #'
+#' @examples
+#' model_info <- load_prebuilt_wss_model()
+#' model_info$variant
+#' model_info$x_cols
+#' head(model_info$outcomes)
+#'
 #' @export
-load_prebuilt_wss_model <- function(prebuilt = "core_AD_plasma_biomarkers") {
+load_prebuilt_wss_model <-function(prebuilt = "core_AD_plasma_biomarkers") {
   entry <- .wss_prebuilt_entry(prebuilt)
 
   if (is.null(entry$model)) {
@@ -144,11 +160,14 @@ load_prebuilt_wss_model <- function(prebuilt = "core_AD_plasma_biomarkers") {
 #'   [list_prebuilt_wss()] for available options.
 #'
 #' @return A data.table with columns `biomarker` and `value` (long format,
-#'   one row per reference observation; biomarkers have differing numbers of
-#'   rows due to differing missingness in the original cohort), or `NULL` if
-#'   the given reference set has no associated biomarker reference.
+#'   one row per reference observation), or `NULL` if the given reference set
+#'   has no associated biomarker reference.
 #'
 #' @seealso [normalize_wss_biomarkers()], [project_rank_norm()]
+#'
+#' @examples
+#' ref <- load_prebuilt_biomarker_reference()
+#' table(ref$biomarker)
 #'
 #' @importFrom data.table fread
 #' @export

@@ -22,6 +22,13 @@ elastic net) that predicts all of that reference set's module scores from
 a small set of covariates, without needing to measure the full proteomic
 panel. See \code{\link[=predict_WSS]{predict_WSS()}} to predict from this model directly.
 }
+\examples{
+model_info <- load_prebuilt_wss_model()
+model_info$variant
+model_info$x_cols
+head(model_info$outcomes)
+
+}
 \seealso{
 \code{\link[=predict_WSS]{predict_WSS()}}, \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}
 }

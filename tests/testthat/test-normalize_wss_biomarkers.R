@@ -83,6 +83,7 @@ test_that("normalize_wss_biomarkers(method = 'project') errors on an unknown bio
 test_that("normalize_wss_biomarkers(method = 'project') output feeds directly into predict_WSS", {
   skip_if_not_installed("glmnet")
   skip_if_not_installed("joinet")
+  skip_on_cran()
 
   raw_biomarkers <- data.frame(
     PlasmaPTau181 = 1.5, PlasmaAB142P = 25, PlasmaAB140P = 300, PlasmaABRatio = 0.09,

@@ -1,23 +1,32 @@
 Package: WSSmod
 Title: Weighted Sum of Scores for Protein Network Modules
 Version: 0.1.0
-Authors@R: 
-    person("Robert", "Butler", , "rrbutler@stanford.edu", role = c("aut", "cre"))
-Description: Tools to construct Weighted Sum of Scores (WSS) module-level
-    summaries from proteomic data, using STRING network connectivity and
-    biomarker-association weighting to align and aggregate protein-level
-    signal into module scores.
+Authors@R: c(
+    person("Robert", "Butler", , "rrbutler@stanford.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0200-8682")),
+    person("WSSmod authors", role = "cph")
+  )
+Description: Computes Weighted Sum of Scores (WSS) module-level summaries from
+    proteomic data. Protein-level values are sign-aligned to their association
+    with core biomarkers and combined within 'STRING' network modules, weighted
+    by network connectivity and association strength. Bundled reference modules
+    and a fitted 'joinet' model also allow all module scores to be predicted
+    from age, sex and a small panel of plasma biomarkers, without measuring the
+    full proteomic panel.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
+Depends:
+    R (>= 3.5.0)
+Imports:
+    data.table
+Suggests:
     glmnet,
     joinet,
     RNOmni,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Imports: 
-    data.table
+LazyData: true
 URL: https://github.com/Longo-Lab/WSSmod, https://Longo-Lab.github.io/WSSmod/
 BugReports: https://github.com/Longo-Lab/WSSmod/issues

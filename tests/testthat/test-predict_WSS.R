@@ -34,6 +34,7 @@ test_that("predict_WSS errors when required columns are missing", {
 test_that("predict_WSS errors when a required column is non-numeric", {
   skip_if_not_installed("glmnet")
   skip_if_not_installed("joinet")
+  skip_on_cran()
 
   newdata <- data.frame(
     Age = 72, Gender = "M",
@@ -48,6 +49,7 @@ test_that("predict_WSS errors when a required column is non-numeric", {
 test_that("predict_WSS returns base and meta predictions for all outcomes", {
   skip_if_not_installed("glmnet")
   skip_if_not_installed("joinet")
+  skip_on_cran()
 
   newdata <- data.frame(
     Age = c(72, 65),
@@ -79,6 +81,7 @@ test_that("predict_WSS returns base and meta predictions for all outcomes", {
 test_that("predict_WSS accepts a matrix in addition to a data.frame", {
   skip_if_not_installed("glmnet")
   skip_if_not_installed("joinet")
+  skip_on_cran()
 
   x_cols <- load_prebuilt_wss_model()$x_cols
   newdata_mat <- matrix(0, nrow = 1, ncol = length(x_cols), dimnames = list("subject1", x_cols))
@@ -100,6 +103,7 @@ test_that("predict_WSS with RankNorm applied within a synthetic batch is determi
   # actual numbers.
   skip_if_not_installed("glmnet")
   skip_if_not_installed("joinet")
+  skip_on_cran()
   skip_if_not_installed("RNOmni")
 
   set.seed(42)

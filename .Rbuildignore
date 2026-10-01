@@ -5,3 +5,5 @@
 ^pkgdown$
 ^\.github$
 ^codecov\.yml$
+^data-raw$
+^cran-comments\.md$

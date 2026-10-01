@@ -65,6 +65,11 @@
 #' # Check standard deviations
 #' print(module_results$module_sd)
 #'
+#' # With no `result`, the default bundled reference set is used. The
+#' # simulated example matrix has columns for all of its modules.
+#' default_results <- calculate_WSS(wss_example_expression)
+#' dim(default_results$scores)
+#'
 #' @seealso [list_prebuilt_wss()], [load_prebuilt_wss()], [wss_prebuilt_terms()]
 #'
 #' @import data.table

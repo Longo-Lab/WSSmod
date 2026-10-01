@@ -21,6 +21,11 @@ table may assign the same protein to more than one module (e.g. once per
 biomarker it was associated with); \code{\link[=calculate_WSS]{calculate_WSS()}} deduplicates and
 filters this table before use via \code{dedup_by} and \code{min_module_size}.
 }
+\examples{
+ref <- load_prebuilt_wss()
+head(ref[, c("module", "symbol", "mean_beta", "mean_alpha_scaled")])
+
+}
 \seealso{
 \code{\link[=calculate_WSS]{calculate_WSS()}}, \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=wss_prebuilt_terms]{wss_prebuilt_terms()}}
 }
