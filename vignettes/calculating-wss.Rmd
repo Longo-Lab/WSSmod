@@ -285,6 +285,6 @@ used by `predict_WSS()`. For proteins, supply your own reference cohort.
 * `predict_WSS()` predicts module scores on the INT-based scale of the bundled
   reference. Scores computed from other scalings, such as z-scaled log2 ratios,
   are not directly comparable with its predictions. The vignette
-  [Predicting WSS scores from plasma biomarkers](predicting-wss.html) covers
-  that function.
+  [Predicting Weighted Sum Scores from plasma biomarkers](predicting-wss.html)
+  covers that function.
 * The data in this vignette are simulated and have no biological meaning.
