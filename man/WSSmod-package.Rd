@@ -4,15 +4,15 @@
 \name{WSSmod-package}
 \alias{WSSmod}
 \alias{WSSmod-package}
-\title{WSSmod: Weighted Sum of Scores for Protein Network Modules}
+\title{WSSmod: Weighted Sum Scores for Protein Network Modules}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Computes Weighted Sum of Scores (WSS) module-level summaries from proteomic data. Protein-level values are sign-aligned to their association with core biomarkers and combined within 'STRING' network modules, weighted by network connectivity and association strength. Bundled reference modules and a fitted 'joinet' model also allow all module scores to be predicted from age, sex and a small panel of plasma biomarkers, without measuring the full proteomic panel.
+Computes Weighted Sum Score (WSS) module-level summaries from proteomic data. Protein-level values are sign-aligned to their association with core biomarkers and combined within 'STRING' network modules, weighted by network connectivity and association strength. Bundled reference modules and a fitted 'joinet' model also allow all module scores to be predicted from age, sex and a small panel of plasma biomarkers, without measuring the full proteomic panel.
 }
 \details{
-WSSmod computes Weighted Sum of Scores (WSS) module scores, and predicts
-them from a small panel of plasma biomarkers.
+WSSmod computes Weighted Sum Score (WSS) values for protein network
+modules, and predicts them from a small panel of plasma biomarkers.
 
 \strong{Scoring modules from proteomic data}
 \itemize{

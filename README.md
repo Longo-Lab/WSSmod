@@ -12,12 +12,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![codecov](https://codecov.io/github/Longo-Lab/WSSmod/graph/badge.svg?token=YU275M964D)](https://app.codecov.io/github/Longo-Lab/WSSmod)
 <!-- badges: end -->
 
-WSSmod provides tools to construct Weighted Sum of Scores (WSS)
-module-level summaries from proteomic data. Proteins are grouped into
-STRING network modules, sign-flipped to align with the direction of core
-biomarker association, and combined into a single module score per
-sample using a weighted average based on network connectivity (alpha
-centrality) and biomarker association strength.
+WSSmod provides tools to construct Weighted Sum Score (WSS) module-level
+summaries from proteomic data. Proteins are grouped into STRING network
+modules, sign-flipped to align with the direction of core biomarker
+association, and combined into a single module score per sample using a
+weighted average based on network connectivity (alpha centrality) and
+biomarker association strength.
 
 This package accompanies the Longo Lab plasma biomarker proteomics work.
 

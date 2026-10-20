@@ -1,6 +1,6 @@
 #' @details
-#' WSSmod computes Weighted Sum of Scores (WSS) module scores, and predicts
-#' them from a small panel of plasma biomarkers.
+#' WSSmod computes Weighted Sum Score (WSS) values for protein network
+#' modules, and predicts them from a small panel of plasma biomarkers.
 #'
 #' **Scoring modules from proteomic data**
 #'

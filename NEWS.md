@@ -4,7 +4,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 
 ## Module scores
 
-* `calculate_WSS()` computes Weighted Sum of Scores module-level summaries
+* `calculate_WSS()` computes Weighted Sum Score module-level summaries
   from proteomic data, using STRING network connectivity and
   biomarker-association weighting to align and aggregate protein-level
   signal into module scores. Supports `dedup_by` and `min_module_size`
@@ -31,7 +31,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 
 ## Documentation
 
-* New vignette, "Calculating WSS scores", covering input normalization,
+* New vignette, "Calculating Weighted Sum Scores", covering input normalization,
   the bundled and custom module tables, and scoring new samples against a
   reference cohort.
 * A package-level help page (`?WSSmod`) gives an overview of the functions
