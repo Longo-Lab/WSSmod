@@ -1,8 +1,8 @@
 ---
-title: "Calculating WSS scores"
+title: "Calculating Weighted Sum Scores"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Calculating WSS scores}
+  %\VignetteIndexEntry{Calculating WSS}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,9 +21,9 @@ has_rnomni <- requireNamespace("RNOmni", quietly = TRUE)
 library(WSSmod)
 ```
 
-## What a WSS score is
+## What a Weighted Sum Score is
 
-A Weighted Sum of Scores (WSS) summarizes a group of related proteins, a
+A Weighted Sum Score (WSS) summarizes a group of related proteins, a
 *module*, as one number per sample. For each module, every protein is
 sign-aligned using the sign of its `mean_beta` (its association with the core
 biomarkers), then the module score is the average of those aligned values,
@@ -61,9 +61,8 @@ scaling matters. The bundled reference set was built from SomaScan data on a
 rank-based inverse normal transformed (INT) scale, which makes no assumption
 about the distribution of the values. In our experience, TMT-MS and DIA-MS data
 processed TAMPOR-style as log2(median ratio) values has worked similarly well
-without needing a non-parametric transform.
-<!-- TODO(#5): cite a source for the TAMPOR-style statement before CRAN
-submission. -->
+without needing a non-parametric transform, only z-scaling (unpublished data).
+
 
 ### Two ways to prepare a matrix
 
@@ -132,8 +131,7 @@ summary(lengths(res$module_proteins))
 head(res$module_proteins[["Merged.M17"]])
 ```
 
-```{r boxplot, fig.width = 6, fig.height = 3.5,
-  fig.alt = "Boxplots of WSS scores for the first eight modules across the 50 simulated samples."}
+```{r boxplot, fig.width = 6, fig.height = 3.5, fig.alt = "Boxplots of WSS scores for the first eight modules across the 50 simulated samples."}
 # Spread of the first eight module scores (simulated data, no biological
 # meaning)
 par(mar = c(6, 4, 1, 1))
