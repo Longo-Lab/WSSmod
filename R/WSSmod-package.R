@@ -4,8 +4,8 @@
 #'
 #' **Scoring modules from proteomic data**
 #'
-#' * [calculate_WSS()] scores each module from a normalized samples-by-proteins
-#'   matrix, using the bundled reference modules or your own.
+#' * [calculate_WSS()] scores each module from a normalized and scaled
+#'   samples-by-proteins matrix, using the bundled reference modules or your own.
 #' * [project_rank_norm()] projects new values onto a frozen rank-normal
 #'   reference, for normalizing new samples against a reference cohort.
 #'

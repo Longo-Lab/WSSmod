@@ -16,8 +16,8 @@ them from a small panel of plasma biomarkers.
 
 \strong{Scoring modules from proteomic data}
 \itemize{
-\item \code{\link[=calculate_WSS]{calculate_WSS()}} scores each module from a normalized samples-by-proteins
-matrix, using the bundled reference modules or your own.
+\item \code{\link[=calculate_WSS]{calculate_WSS()}} scores each module from a normalized and scaled
+samples-by-proteins matrix, using the bundled reference modules or your own.
 \item \code{\link[=project_rank_norm]{project_rank_norm()}} projects new values onto a frozen rank-normal
 reference, for normalizing new samples against a reference cohort.
 }
