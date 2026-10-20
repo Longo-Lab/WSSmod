@@ -16,8 +16,8 @@ them from a small panel of plasma biomarkers.
 **Scoring modules from proteomic data**
 
 - [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
-  scores each module from a normalized samples-by-proteins matrix, using
-  the bundled reference modules or your own.
+  scores each module from a normalized and scaled samples-by-proteins
+  matrix, using the bundled reference modules or your own.
 
 - [`project_rank_norm()`](https://Longo-Lab.github.io/WSSmod/reference/project_rank_norm.md)
   projects new values onto a frozen rank-normal reference, for

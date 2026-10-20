@@ -44,8 +44,8 @@ Computes Weighted Sum of Scores (WSS) module-level summaries from proteomic data
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>WSSmod computes Weighted Sum of Scores (WSS) module scores, and predicts
 them from a small panel of plasma biomarkers.</p>
-<p><strong>Scoring modules from proteomic data</strong></p><ul><li><p><code><a href="calculate_WSS.html">calculate_WSS()</a></code> scores each module from a normalized samples-by-proteins
-matrix, using the bundled reference modules or your own.</p></li>
+<p><strong>Scoring modules from proteomic data</strong></p><ul><li><p><code><a href="calculate_WSS.html">calculate_WSS()</a></code> scores each module from a normalized and scaled
+samples-by-proteins matrix, using the bundled reference modules or your own.</p></li>
 <li><p><code><a href="project_rank_norm.html">project_rank_norm()</a></code> projects new values onto a frozen rank-normal
 reference, for normalizing new samples against a reference cohort.</p></li>
 </ul><p><strong>Predicting module scores from plasma biomarkers</strong></p><ul><li><p><code><a href="normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> rank-normalizes raw biomarker values, for a
