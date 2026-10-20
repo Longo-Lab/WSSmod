@@ -31,6 +31,9 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 
 ## Documentation
 
+* New vignette, "Calculating WSS scores", covering input normalization,
+  the bundled and custom module tables, and scoring new samples against a
+  reference cohort.
 * A package-level help page (`?WSSmod`) gives an overview of the functions
   and bundled data.
 * `calculate_WSS()` now documents what input scale it expects.
