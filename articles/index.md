@@ -2,5 +2,5 @@
 
 ### All vignettes
 
-- [Calculating WSS
-  scores](https://Longo-Lab.github.io/WSSmod/articles/calculating-wss.md):
+- [Calculating Weighted Sum
+  Scores](https://Longo-Lab.github.io/WSSmod/articles/calculating-wss.md):

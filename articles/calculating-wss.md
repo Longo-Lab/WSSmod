@@ -1,13 +1,13 @@
-# Calculating WSS scores
+# Calculating Weighted Sum Scores
 
 ``` r
 
 library(WSSmod)
 ```
 
-## What a WSS score is
+## What a Weighted Sum Score is
 
-A Weighted Sum of Scores (WSS) summarizes a group of related proteins, a
+A Weighted Sum Score (WSS) summarizes a group of related proteins, a
 *module*, as one number per sample. For each module, every protein is
 sign-aligned using the sign of its `mean_beta` (its association with the
 core biomarkers), then the module score is the average of those aligned
@@ -51,7 +51,7 @@ from SomaScan data on a rank-based inverse normal transformed (INT)
 scale, which makes no assumption about the distribution of the values.
 In our experience, TMT-MS and DIA-MS data processed TAMPOR-style as
 log2(median ratio) values has worked similarly well without needing a
-non-parametric transform.
+non-parametric transform, only z-scaling (unpublished data).
 
 ### Two ways to prepare a matrix
 
@@ -147,7 +147,16 @@ head(res$module_proteins[["Merged.M17"]])
 #> [1] "ZWILCH" "SPC25"  "NDC80"  "WEE2"   "CKAP2"  "ZW10"
 ```
 
-`{r boxplot, fig.width = 6, fig.height = 3.5, fig.alt = "Boxplots of WSS scores for the first eight modules across the 50 simulated samples."} # Spread of the first eight module scores (simulated data, no biological # meaning) par(mar = c(6, 4, 1, 1)) boxplot(res$scores[, 1:8], las = 2, ylab = "WSS score")`
+``` r
+
+# Spread of the first eight module scores (simulated data, no biological
+# meaning)
+par(mar = c(6, 4, 1, 1))
+boxplot(res$scores[, 1:8], las = 2, ylab = "WSS score")
+```
+
+![Boxplots of WSS scores for the first eight modules across the 50
+simulated samples.](calculating-wss_files/figure-html/boxplot-1.png)
 
 ## Using your own module table
 
