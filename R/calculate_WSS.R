@@ -6,8 +6,9 @@
 #' and weights by network importance and biomarker association strength.
 #'
 #' @param expr_matrix A numeric matrix with samples as rows and genes/proteins
-#'   as columns (INT-normalized). Column names should match the 'symbol' values
-#'   in the result table.
+#'   as columns, already normalized to a comparable scale across proteins (see
+#'   Details). Column names should match the 'symbol' values in the result
+#'   table.
 #' @param result A data.table containing module information with required columns:
 #'   module, symbol (gene identifiers), mean_beta (for sign-flipping),
 #'   mean_alpha_scaled (for weighting). If `NULL` (the default), a prebuilt
@@ -39,6 +40,17 @@
 #'
 #' Higher module scores indicate greater module activity in the direction of
 #' disease progression.
+#'
+#' **Input scale.** The function does not normalize `expr_matrix`. Each module
+#' score is a weighted average of sign-aligned protein values, so the scores
+#' inherit the scale of the input. The bundled reference set was built from
+#' SomaScan data that had been rank-based inverse normal transformed (INT) per
+#' protein, so INT values are the expected input for it. Data from other
+#' platforms can be scored if their values are on a similarly comparable
+#' per-protein scale, for example log2 ratios from TMT or DIA mass
+#' spectrometry. Scores computed from differently scaled input are not
+#' directly comparable with each other, and [predict_WSS()] predicts scores on
+#' the INT-based scale of the bundled reference.
 #'
 #' @examples
 #' expr_matrix <- matrix(

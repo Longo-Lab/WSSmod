@@ -29,6 +29,12 @@ Initial versioned release.
 * `project_rank_norm()` and `load_prebuilt_biomarker_reference()` expose
   the underlying projection utility and reference distribution directly.
 
+## Documentation
+
+* A package-level help page (`?WSSmod`) gives an overview of the functions
+  and bundled data.
+* `calculate_WSS()` now documents what input scale it expects.
+
 ## Example data
 
 * `wss_example_expression` and `wss_example_biomarkers` are small, fully
