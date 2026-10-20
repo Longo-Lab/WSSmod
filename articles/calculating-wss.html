@@ -287,7 +287,11 @@ so <code>modA</code> loses it:</p>
 from the proteins that are present. If it lacks all of them, the module
 gets <code>NA</code> scores and a warning, one per module. To see which
 modules were actually scored, look at <code>module_proteins</code> or at
-all-<code>NA</code> columns in <code>scores</code>.</p>
+all-<code>NA</code> columns in <code>scores</code>. Note that
+<code>min_module_size</code> filters the module table, not the matrix,
+so a module can be scored from only a few of its proteins; check
+<code>module_proteins</code> before relying on a sparsely covered
+module.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Keep only the first 300 proteins; the warnings are suppressed here</span></span>
 <span><span class="va">partial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">wss_example_expression</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">300</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
@@ -328,8 +332,8 @@ place each new value within the frozen reference.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">new_rows</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">new_int</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">raw</span><span class="op">)</span><span class="op">[</span><span class="va">new_rows</span><span class="op">]</span></span></code></pre></div>
-<p>Both matrices are now on the same INT scale and can be scored in the
-same way:</p>
+<p>With the reference and the new samples on the same INT scale, both
+can be scored in the same way:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reference_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">reference_int</span><span class="op">)</span></span>
 <span><span class="va">new_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">new_int</span><span class="op">)</span></span>

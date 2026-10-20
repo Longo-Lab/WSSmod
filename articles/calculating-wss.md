@@ -246,7 +246,9 @@ If the matrix lacks some of a module’s proteins, the module is scored
 from the proteins that are present. If it lacks all of them, the module
 gets `NA` scores and a warning, one per module. To see which modules
 were actually scored, look at `module_proteins` or at all-`NA` columns
-in `scores`.
+in `scores`. Note that `min_module_size` filters the module table, not
+the matrix, so a module can be scored from only a few of its proteins;
+check `module_proteins` before relying on a sparsely covered module.
 
 ``` r
 
@@ -296,8 +298,8 @@ new_int <- vapply(
 rownames(new_int) <- rownames(raw)[new_rows]
 ```
 
-Both matrices are now on the same INT scale and can be scored in the
-same way:
+With the reference and the new samples on the same INT scale, both can
+be scored in the same way:
 
 ``` r
 
