@@ -7,11 +7,14 @@
 #'
 #' @param expr_matrix A numeric matrix with samples as rows and genes/proteins
 #'   as columns, already normalized and scaled (see Details). Column names
-#'   should match the 'symbol' values in the result table.
+#'   should match the 'symbol' values in the result table. Proteins used by a
+#'   module must not have missing values (see Details).
 #' @param result A data.table containing module information with required columns:
 #'   module, symbol (gene identifiers), mean_beta (for sign-flipping),
-#'   mean_alpha_scaled (for weighting). If `NULL` (the default), a prebuilt
-#'   reference set shipped with the package is used instead; see `prebuilt`.
+#'   mean_alpha_scaled (for weighting). A data.frame is converted to a
+#'   data.table; any other class is an error. If `NULL` (the default), a
+#'   prebuilt reference set shipped with the package is used instead; see
+#'   `prebuilt`.
 #' @param prebuilt Name of a prebuilt reference set to use when `result` is
 #'   `NULL`. Defaults to `"core_AD_plasma_biomarkers"`. See
 #'   [list_prebuilt_wss()] for available options. Ignored if `result` is
@@ -30,6 +33,10 @@
 #'   \item{summary_stats}{data.table with summary statistics for each module score}
 #'   \item{module_sd}{Named vector of standard deviations for each module}
 #'   \item{module_proteins}{List of protein names in each module}
+#'
+#'   A module with none of its proteins in `expr_matrix` cannot be scored. It
+#'   triggers a warning, has all-`NA` scores and a `module_sd` of 0, and is left
+#'   out of `summary_stats` and `module_proteins`.
 #'
 #' @details
 #' For each module, proteins are sign-flipped based on sign(mean_beta) to align
@@ -50,6 +57,13 @@
 #' scaled input are not directly comparable with each other, and
 #' [predict_WSS()] predicts scores on the INT-based scale of the bundled
 #' reference.
+#'
+#' **Missing values.** Modules are scored from the proteins that are present in
+#' `expr_matrix` (see the return value for modules with no proteins present),
+#' but missing values (`NA`) in a protein that a module uses are not supported:
+#' the function stops with an error that names the affected proteins. Impute
+#' the values, or drop the affected proteins or samples, before scoring.
+#' Missing values in proteins that no module uses are ignored.
 #'
 #' @examples
 #' expr_matrix <- matrix(
@@ -91,9 +105,14 @@ calculate_WSS <- function(expr_matrix, result = NULL, prebuilt = "core_AD_plasma
 
   if (is.null(result)) {
     result <- load_prebuilt_wss(prebuilt)
+  } else {
+    result <- .as_result_table(result)
   }
 
   result <- .filter_wss_result(result, dedup_by = dedup_by, min_module_size = min_module_size)
+
+  # Stop early, with a clear message, rather than failing on a missing value
+  .check_no_missing_expr(expr_matrix, result)
 
   # Get unique modules
   modules <- unique(result$module)
