@@ -1,6 +1,6 @@
-# WSSmod 0.1.0
+# WSSmod (development version)
 
-Initial versioned release.
+Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 
 ## Module scores
 
