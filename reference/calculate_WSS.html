@@ -67,14 +67,17 @@ and weights by network importance and biomarker association strength.</p>
 <dl><dt id="arg-expr-matrix">expr_matrix<a class="anchor" aria-label="anchor" href="#arg-expr-matrix"></a></dt>
 <dd><p>A numeric matrix with samples as rows and genes/proteins
 as columns, already normalized and scaled (see Details). Column names
-should match the 'symbol' values in the result table.</p></dd>
+should match the 'symbol' values in the result table. Proteins used by a
+module must not have missing values (see Details).</p></dd>
 
 
 <dt id="arg-result">result<a class="anchor" aria-label="anchor" href="#arg-result"></a></dt>
 <dd><p>A data.table containing module information with required columns:
 module, symbol (gene identifiers), mean_beta (for sign-flipping),
-mean_alpha_scaled (for weighting). If <code>NULL</code> (the default), a prebuilt
-reference set shipped with the package is used instead; see <code>prebuilt</code>.</p></dd>
+mean_alpha_scaled (for weighting). A data.frame is converted to a
+data.table; any other class is an error. If <code>NULL</code> (the default), a
+prebuilt reference set shipped with the package is used instead; see
+<code>prebuilt</code>.</p></dd>
 
 
 <dt id="arg-prebuilt">prebuilt<a class="anchor" aria-label="anchor" href="#arg-prebuilt"></a></dt>
@@ -113,7 +116,11 @@ matching the module size filter (<code>N &gt; 2</code>) used to build the origin
 <dt>module_proteins</dt>
 <dd><p>List of protein names in each module</p></dd>
 
-</dl></div>
+
+</dl><p>A module with none of its proteins in <code>expr_matrix</code> cannot be scored. It
+triggers a warning, has all-<code>NA</code> scores and a <code>module_sd</code> of 0, and is left
+out of <code>summary_stats</code> and <code>module_proteins</code>.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>For each module, proteins are sign-flipped based on sign(mean_beta) to align
@@ -132,6 +139,12 @@ SomaScan data on an INT scale. Scores computed on differently normalized or
 scaled input are not directly comparable with each other, and
 <code><a href="predict_WSS.html">predict_WSS()</a></code> predicts scores on the INT-based scale of the bundled
 reference.</p>
+<p><strong>Missing values.</strong> Modules are scored from the proteins that are present in
+<code>expr_matrix</code> (see the return value for modules with no proteins present),
+but missing values (<code>NA</code>) in a protein that a module uses are not supported:
+the function stops with an error that names the affected proteins. Impute
+the values, or drop the affected proteins or samples, before scoring.
+Missing values in proteins that no module uses are ignored.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

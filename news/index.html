@@ -41,9 +41,14 @@
 <div class="section level3">
 <h3 id="module-scores-development-version">Module scores<a class="anchor" aria-label="anchor" href="#module-scores-development-version"></a></h3>
 <ul><li>
-<code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> computes Weighted Sum of Scores module-level summaries from proteomic data, using STRING network connectivity and biomarker-association weighting to align and aggregate protein-level signal into module scores. Supports <code>dedup_by</code> and <code>min_module_size</code> options for controlling how genes assigned to multiple modules are deduplicated and how small modules are filtered.</li>
+<code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> computes Weighted Sum Score module-level summaries from proteomic data, using STRING network connectivity and biomarker-association weighting to align and aggregate protein-level signal into module scores. Supports <code>dedup_by</code> and <code>min_module_size</code> options for controlling how genes assigned to multiple modules are deduplicated and how small modules are filtered.</li>
 <li>
 <code><a href="../reference/load_prebuilt_wss.html">load_prebuilt_wss()</a></code>, <code><a href="../reference/list_prebuilt_wss.html">list_prebuilt_wss()</a></code>, and <code><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms()</a></code> provide access to a bundled reference module/weighting table (<code>"core_AD_plasma_biomarkers"</code>) and its module term labels.</li>
+<li>
+<code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> accepts a data frame as <code>result</code> (converted to a data.table) and rejects other classes with an informative error.</li>
+<li>
+<code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> stops with a clear error that names the affected proteins when a protein used by a module has a missing value. This also covers the case where every module has one, which previously returned <code>NA</code> scores without any message.</li>
+<li>The documentation now states that a module with none of its proteins in the matrix is reported with all-<code>NA</code> scores and a <code>module_sd</code> of 0.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="prediction-from-core-biomarkers-development-version">Prediction from core biomarkers<a class="anchor" aria-label="anchor" href="#prediction-from-core-biomarkers-development-version"></a></h3>
@@ -56,7 +61,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-development-version">Documentation<a class="anchor" aria-label="anchor" href="#documentation-development-version"></a></h3>
-<ul><li>New vignette, “Calculating WSS scores”, covering input normalization, the bundled and custom module tables, and scoring new samples against a reference cohort.</li>
+<ul><li>New vignette, “Calculating Weighted Sum Scores”, covering input normalization, the bundled and custom module tables, and scoring new samples against a reference cohort.</li>
 <li>A package-level help page (<code><a href="../reference/WSSmod-package.html">?WSSmod</a></code>) gives an overview of the functions and bundled data.</li>
 <li>
 <code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> now documents what input scale it expects.</li>

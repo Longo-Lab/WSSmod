@@ -8,7 +8,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
 ### Module scores
 
 - [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
-  computes Weighted Sum of Scores module-level summaries from proteomic
+  computes Weighted Sum Score module-level summaries from proteomic
   data, using STRING network connectivity and biomarker-association
   weighting to align and aggregate protein-level signal into module
   scores. Supports `dedup_by` and `min_module_size` options for
@@ -20,6 +20,16 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
   [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
   provide access to a bundled reference module/weighting table
   (`"core_AD_plasma_biomarkers"`) and its module term labels.
+- [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
+  accepts a data frame as `result` (converted to a data.table) and
+  rejects other classes with an informative error.
+- [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
+  stops with a clear error that names the affected proteins when a
+  protein used by a module has a missing value. This also covers the
+  case where every module has one, which previously returned `NA` scores
+  without any message.
+- The documentation now states that a module with none of its proteins
+  in the matrix is reported with all-`NA` scores and a `module_sd` of 0.
 
 ### Prediction from core biomarkers
 
@@ -45,9 +55,9 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
 
 ### Documentation
 
-- New vignette, “Calculating WSS scores”, covering input normalization,
-  the bundled and custom module tables, and scoring new samples against
-  a reference cohort.
+- New vignette, “Calculating Weighted Sum Scores”, covering input
+  normalization, the bundled and custom module tables, and scoring new
+  samples against a reference cohort.
 - A package-level help page
   ([`?WSSmod`](https://Longo-Lab.github.io/WSSmod/reference/WSSmod-package.md))
   gives an overview of the functions and bundled data.

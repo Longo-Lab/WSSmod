@@ -160,7 +160,8 @@ simulated samples.](calculating-wss_files/figure-html/boxplot-1.png)
 
 ## Using your own module table
 
-A module table is a `data.table` with these columns:
+A module table is a `data.table` (a data frame is converted to one) with
+these columns:
 
 - `module`: module name,
 - `symbol`: protein identifier, matching the column names of the matrix,
@@ -253,11 +254,12 @@ lengths(with_small$module_proteins)
 
 If the matrix lacks some of a module’s proteins, the module is scored
 from the proteins that are present. If it lacks all of them, the module
-gets `NA` scores and a warning, one per module. To see which modules
-were actually scored, look at `module_proteins` or at all-`NA` columns
-in `scores`. Note that `min_module_size` filters the module table, not
-the matrix, so a module can be scored from only a few of its proteins;
-check `module_proteins` before relying on a sparsely covered module.
+gets `NA` scores and a `module_sd` of 0, plus a warning, one per module.
+To see which modules were actually scored, look at `module_proteins` or
+at all-`NA` columns in `scores`. Note that `min_module_size` filters the
+module table, not the matrix, so a module can be scored from only a few
+of its proteins; check `module_proteins` before relying on a sparsely
+covered module.
 
 ``` r
 
@@ -272,9 +274,22 @@ sum(colSums(is.na(partial$scores)) == nrow(partial$scores))
 ```
 
 Missing values *within* the matrix are different: they are not supported
-for the proteins a module uses. Impute them, or drop the affected
-proteins or samples, before calling
-[`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md).
+for the proteins a module uses.
+[`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
+stops with an error that names the affected proteins, so impute the
+values, or drop the affected proteins or samples, before calling it.
+Missing values in proteins that no module uses are ignored.
+
+``` r
+
+# One missing value in a protein that a module uses
+with_na <- wss_example_expression
+with_na[1, 2] <- NA
+
+# calculate_WSS() stops and names the affected protein
+tryCatch(calculate_WSS(with_na), error = function(e) conditionMessage(e))
+#> [1] "`expr_matrix` has missing values (NA) in 1 protein(s) used by the modules, e.g. HYOU1. calculate_WSS() does not handle missing values; impute them, or drop the affected proteins or samples, before scoring."
+```
 
 ## Scoring new samples against a reference cohort
 
@@ -334,6 +349,8 @@ For proteins, supply your own reference cohort.
   predicts module scores on the INT-based scale of the bundled
   reference. Scores computed from other scalings, such as z-scaled log2
   ratios, are not directly comparable with its predictions. The vignette
-  on predicting WSS scores from plasma biomarkers covers that function.
+  [Predicting WSS scores from plasma
+  biomarkers](https://Longo-Lab.github.io/WSSmod/articles/predicting-wss.md)
+  covers that function.
 - The data in this vignette are simulated and have no biological
   meaning.
