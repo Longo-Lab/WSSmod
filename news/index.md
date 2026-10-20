@@ -42,6 +42,14 @@ Initial versioned release.
   expose the underlying projection utility and reference distribution
   directly.
 
+### Documentation
+
+- A package-level help page
+  ([`?WSSmod`](https://Longo-Lab.github.io/WSSmod/reference/WSSmod-package.md))
+  gives an overview of the functions and bundled data.
+- [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
+  now documents what input scale it expects.
+
 ### Example data
 
 - `wss_example_expression` and `wss_example_biomarkers` are small, fully
