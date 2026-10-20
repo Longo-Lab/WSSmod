@@ -153,3 +153,9 @@ pred$meta
 - [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
   : Get Module Term Labels for a Prebuilt WSS Reference Set
 
+# Articles
+
+### All vignettes
+
+- [Calculating WSS
+  scores](https://Longo-Lab.github.io/WSSmod/articles/calculating-wss.md):

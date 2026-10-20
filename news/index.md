@@ -45,6 +45,9 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
 
 ### Documentation
 
+- New vignette, “Calculating WSS scores”, covering input normalization,
+  the bundled and custom module tables, and scoring new samples against
+  a reference cohort.
 - A package-level help page
   ([`?WSSmod`](https://Longo-Lab.github.io/WSSmod/reference/WSSmod-package.md))
   gives an overview of the functions and bundled data.
