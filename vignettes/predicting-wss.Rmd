@@ -48,7 +48,11 @@ The model uses ten columns:
 
 * `Age`, in years,
 * `Gender`, numeric, with `1` for male and `0` for not male,
-* eight raw plasma biomarkers: Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on the fully
+* eight raw plasma biomarkers: `PlasmaPTau181`, `PlasmaAB142P`,
+  `PlasmaAB140P`, `PlasmaABRatio`, `PlasmapTau217`,
+  `PlasmapTau217_AB42Ratio`, `PlasmaGFAP` and `PlasmaNfL`.
+
+Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on the fully
 automated Lumipulse G 1200 platform (Fujirebio US, Inc, Malvern, PA),
 following the recommendations of the NACC Working Group. The two ratio columns
 are derived from these measures (Aβ42/Aβ40 and pTau217/Aβ42).
