@@ -38,6 +38,31 @@ The model uses ten columns:
   `PlasmaAB140P`, `PlasmaABRatio`, `PlasmapTau217`,
   `PlasmapTau217_AB42Ratio`, `PlasmaGFAP` and `PlasmaNfL`.
 
+### How the biomarkers were measured
+
+The model was trained on plasma biomarkers measured as follows, and new
+values should come from a comparable procedure. Whole blood was
+collected into EDTA-coated tubes by standard venipuncture and
+centrifuged for 10 minutes at 2,000 x g at 22 °C. The plasma was
+aliquoted into polypropylene tubes and stored at –80 °C until analysis.
+
+Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on the
+fully automated Lumipulse G 1200 platform (Fujirebio US, Inc, Malvern,
+PA), following the recommendations of the NACC Working Group. The two
+ratio columns are derived from these measures (Aβ42/Aβ40 and
+pTau217/Aβ42). Before analysis,
+
+- for pTau181, Aβ42 and Aβ40, samples were thawed and centrifuged for 5
+  minutes at 1,000 x g at 4 °C,
+- for pTau217, GFAP and NfL, samples were thawed and centrifuged for 10
+  minutes at 2,000 x g at 4 °C.
+
+The `PlasmaAB142P` and `PlasmaAB140P` columns hold the Aβ42 and Aβ40
+values. The measurements were made by investigators blind to the
+demographic and clinical information of the samples.
+
+### Example data
+
 The package ships `wss_example_biomarkers`, simulated values for 20
 patients with these columns. They have no biological meaning.
 
@@ -244,9 +269,9 @@ simulated patients.](predicting-wss_files/figure-html/boxplot-1.png)
   is for research use only. It is not a diagnostic tool.
 - The model was trained on a single baseline cohort. Its performance in
   other cohorts, assays or populations has not been established.
-- The biomarker inputs must be measured as in the training data. Values
-  from a different assay or platform can produce meaningless predictions
-  even after normalization.
+- The biomarker inputs must be measured as in the training data (see
+  “How the biomarkers were measured”). Values from a different assay or
+  platform can produce meaningless predictions even after normalization.
 - All ten inputs are required, and missing values are not supported.
 - The data in this vignette are simulated and have no biological
   meaning.

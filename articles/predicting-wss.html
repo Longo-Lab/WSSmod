@@ -110,6 +110,34 @@ run only if both are installed.</p>
 <code>PlasmapTau217_AB42Ratio</code>, <code>PlasmaGFAP</code> and
 <code>PlasmaNfL</code>.</li>
 </ul>
+<div class="section level3">
+<h3 id="how-the-biomarkers-were-measured">How the biomarkers were measured<a class="anchor" aria-label="anchor" href="#how-the-biomarkers-were-measured"></a>
+</h3>
+<p>The model was trained on plasma biomarkers measured as follows, and
+new values should come from a comparable procedure. Whole blood was
+collected into EDTA-coated tubes by standard venipuncture and
+centrifuged for 10 minutes at 2,000 x g at 22 °C. The plasma was
+aliquoted into polypropylene tubes and stored at –80 °C until
+analysis.</p>
+<p>Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on
+the fully automated Lumipulse G 1200 platform (Fujirebio US, Inc,
+Malvern, PA), following the recommendations of the NACC Working Group.
+The two ratio columns are derived from these measures (Aβ42/Aβ40 and
+pTau217/Aβ42). Before analysis,</p>
+<ul>
+<li>for pTau181, Aβ42 and Aβ40, samples were thawed and centrifuged for
+5 minutes at 1,000 x g at 4 °C,</li>
+<li>for pTau217, GFAP and NfL, samples were thawed and centrifuged for
+10 minutes at 2,000 x g at 4 °C.</li>
+</ul>
+<p>The <code>PlasmaAB142P</code> and <code>PlasmaAB140P</code> columns
+hold the Aβ42 and Aβ40 values. The measurements were made by
+investigators blind to the demographic and clinical information of the
+samples.</p>
+</div>
+<div class="section level3">
+<h3 id="example-data">Example data<a class="anchor" aria-label="anchor" href="#example-data"></a>
+</h3>
 <p>The package ships <code>wss_example_biomarkers</code>, simulated
 values for 20 patients with these columns. They have no biological
 meaning.</p>
@@ -131,6 +159,7 @@ years and <code>Gender</code> stays 0/1.</p>
 <code class="sourceCode R"><span><span class="co"># The eight raw biomarker columns, without Age and Gender</span></span>
 <span><span class="va">biomarker_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">wss_example_biomarkers</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Age"</span>, <span class="st">"Gender"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">raw_biomarkers</span> <span class="op">&lt;-</span> <span class="va">wss_example_biomarkers</span><span class="op">[</span>, <span class="va">biomarker_cols</span><span class="op">]</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="choosing-a-normalization">Choosing a normalization<a class="anchor" aria-label="anchor" href="#choosing-a-normalization"></a>
@@ -290,9 +319,10 @@ from data on a different scale, such as z-scaled log2 ratios.</li>
 diagnostic tool.</li>
 <li>The model was trained on a single baseline cohort. Its performance
 in other cohorts, assays or populations has not been established.</li>
-<li>The biomarker inputs must be measured as in the training data.
-Values from a different assay or platform can produce meaningless
-predictions even after normalization.</li>
+<li>The biomarker inputs must be measured as in the training data (see
+“How the biomarkers were measured”). Values from a different assay or
+platform can produce meaningless predictions even after
+normalization.</li>
 <li>All ten inputs are required, and missing values are not
 supported.</li>
 <li>The data in this vignette are simulated and have no biological
