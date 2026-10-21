@@ -24,6 +24,14 @@ This package accompanies the Longo Lab preprint, Butler et al. (2026),
 disease
 progression](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
+## License
+
+The WSSmod code is released under the MIT license. The bundled reference
+files are derived from the data and results of the preprint above, which
+is licensed under [CC BY-NC 4.0
+International](https://creativecommons.org/licenses/by-nc/4.0/); please
+observe its terms, including non-commercial use, when reusing them.
+
 ## Installation
 
 You can install the development version of WSSmod from GitHub with:
