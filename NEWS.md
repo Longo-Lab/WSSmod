@@ -45,6 +45,8 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 * New vignette, "Predicting Weighted Sum Scores from plasma biomarkers", covering
   the biomarker inputs, the two normalization methods, and reading the
   predicted module scores.
+* New vignette, "Exploring the bundled datasets", describing each bundled file, its
+  loader and what it can be used for.
 * A package-level help page (`?WSSmod`) gives an overview of the functions
   and bundled data.
 * `calculate_WSS()` now documents what input scale it expects.

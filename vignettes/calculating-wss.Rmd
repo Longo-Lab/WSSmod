@@ -279,7 +279,9 @@ dim(new_scores$scores)
 ```
 
 The package bundles a reference distribution only for the plasma biomarkers
-used by `predict_WSS()`. For proteins, supply your own reference cohort.
+used by `predict_WSS()`. For proteins, supply your own reference cohort. The
+vignette [Exploring the bundled datasets](exploring-datasets.html) describes
+that reference and the other bundled files.
 
 ## Interpreting and comparing scores
 
