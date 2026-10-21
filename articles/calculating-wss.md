@@ -343,7 +343,10 @@ dim(new_scores$scores)
 The package bundles a reference distribution only for the plasma
 biomarkers used by
 [`predict_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/predict_WSS.md).
-For proteins, supply your own reference cohort.
+For proteins, supply your own reference cohort. The vignette [Exploring
+the bundled
+datasets](https://Longo-Lab.github.io/WSSmod/articles/exploring-datasets.md)
+describes that reference and the other bundled files.
 
 ## Interpreting and comparing scores
 
