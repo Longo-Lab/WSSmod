@@ -131,7 +131,9 @@ c(
 
 [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
 returns one row per scored module with a short label, the group the
-module came from, and a `mean.Zsum` enrichment summary.
+module came from, and `mean.Zsum`, the Zsummary preservation score of
+the module across 12 independent GNPC cohorts in the
+[preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
 ``` r
 
@@ -285,9 +287,11 @@ dim(wss_example_biomarkers)
 ## Provenance and use
 
 The prebuilt files were derived from plasma proteomic and biomarker data
-from the Longo Lab. They are included so that scores can be calculated
-and predicted without access to the original data. (Maintainer to
-finalize the provenance and licensing statement for each file.)
+from the Longo Lab, as described in the
+[preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
+They are included so that scores can be calculated and predicted without
+access to the original data. (Maintainer to finalize the provenance and
+licensing statement for each file.)
 
 ## Adding a reference set
 

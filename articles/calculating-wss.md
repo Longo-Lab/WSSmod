@@ -18,8 +18,10 @@ in the direction associated with the core biomarkers.
 [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
 computes these scores from a samples-by-proteins matrix. By default it
 uses the bundled `"core_AD_plasma_biomarkers"` reference set, which
-defines 75 modules of plasma proteins built on STRING networks. You can
-also supply your own module table.
+defines 75 modules of plasma proteins built on STRING networks, as
+described in the
+[preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
+You can also supply your own module table.
 
 ## Proteomic data and what `calculate_WSS()` expects
 

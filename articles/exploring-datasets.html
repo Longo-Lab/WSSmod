@@ -215,8 +215,9 @@ also covers.</p>
 <h2 id="module-term-labels">Module term labels<a class="anchor" aria-label="anchor" href="#module-term-labels"></a>
 </h2>
 <p><code><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms()</a></code> returns one row per scored module
-with a short label, the group the module came from, and a
-<code>mean.Zsum</code> enrichment summary.</p>
+with a short label, the group the module came from, and
+<code>mean.Zsum</code>, the Zsummary preservation score of the module
+across 12 independent GNPC cohorts in the <a href="https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text" class="external-link">preprint</a>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">terms</span><span class="op">)</span></span>
@@ -357,10 +358,10 @@ biomarkers for 20 patients.</li>
 <h2 id="provenance-and-use">Provenance and use<a class="anchor" aria-label="anchor" href="#provenance-and-use"></a>
 </h2>
 <p>The prebuilt files were derived from plasma proteomic and biomarker
-data from the Longo Lab. They are included so that scores can be
-calculated and predicted without access to the original data.
-(Maintainer to finalize the provenance and licensing statement for each
-file.)</p>
+data from the Longo Lab, as described in the <a href="https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text" class="external-link">preprint</a>.
+They are included so that scores can be calculated and predicted without
+access to the original data. (Maintainer to finalize the provenance and
+licensing statement for each file.)</p>
 </div>
 <div class="section level2">
 <h2 id="adding-a-reference-set">Adding a reference set<a class="anchor" aria-label="anchor" href="#adding-a-reference-set"></a>

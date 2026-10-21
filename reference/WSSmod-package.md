@@ -6,7 +6,10 @@ core biomarkers and combined within 'STRING' network modules, weighted
 by network connectivity and association strength. Bundled reference
 modules and a fitted 'joinet' model also allow all module scores to be
 predicted from age, sex and a small panel of plasma biomarkers, without
-measuring the full proteomic panel.
+measuring the full proteomic panel. The method is described in Butler et
+al. (2026)
+[doi:10.64898/2026.08.14.26360394](https://doi.org/10.64898/2026.08.14.26360394)
+.
 
 ## Details
 
@@ -47,6 +50,9 @@ modules, and predicts them from a small panel of plasma biomarkers.
   and
   [wss_example_biomarkers](https://Longo-Lab.github.io/WSSmod/reference/wss_example_biomarkers.md)
   are small simulated datasets for trying out the functions.
+
+The method is described in Butler et al. (2026),
+<https://doi.org/10.64898/2026.08.14.26360394>.
 
 ## See also
 

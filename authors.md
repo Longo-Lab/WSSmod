@@ -10,16 +10,18 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
+[`inst/CITATION`](https://github.com/Longo-Lab/WSSmod/blob/main/inst/CITATION)
 
-Butler R (2026). *WSSmod: Weighted Sum Scores for Protein Network
-Modules*. R package version 0.1.0.9000,
-<https://github.com/Longo-Lab/WSSmod>.
+Butler RR, Brown MP, Weber A, Cary GA, et al. (2026). Alzheimer's
+disease blood biomarkers reveal proteomic modules of disease
+progression. medRxiv. doi:10.64898/2026.08.14.26360394
 
-    @Manual{,
-      title = {WSSmod: Weighted Sum Scores for Protein Network Modules},
-      author = {Robert Butler},
+    @Article{,
+      title = {Alzheimer's disease blood biomarkers reveal proteomic modules of disease progression},
+      author = {Robert R. Butler and Michael P. Brown and Audrey Weber and Greg A. Cary and others},
+      journal = {medRxiv},
       year = {2026},
-      note = {R package version 0.1.0.9000},
-      url = {https://github.com/Longo-Lab/WSSmod},
+      doi = {10.64898/2026.08.14.26360394},
+      url = {https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text},
+      note = {Preprint},
     }
