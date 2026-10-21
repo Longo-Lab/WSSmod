@@ -349,7 +349,7 @@ For proteins, supply your own reference cohort.
   predicts module scores on the INT-based scale of the bundled
   reference. Scores computed from other scalings, such as z-scaled log2
   ratios, are not directly comparable with its predictions. The vignette
-  [Predicting WSS scores from plasma
+  [Predicting Weighted Sum Scores from plasma
   biomarkers](https://Longo-Lab.github.io/WSSmod/articles/predicting-wss.md)
   covers that function.
 - The data in this vignette are simulated and have no biological

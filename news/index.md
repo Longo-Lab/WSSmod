@@ -58,6 +58,9 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
 - New vignette, “Calculating Weighted Sum Scores”, covering input
   normalization, the bundled and custom module tables, and scoring new
   samples against a reference cohort.
+- New vignette, “Predicting Weighted Sum Scores from plasma biomarkers”,
+  covering the biomarker inputs, the two normalization methods, and
+  reading the predicted module scores.
 - A package-level help page
   ([`?WSSmod`](https://Longo-Lab.github.io/WSSmod/reference/WSSmod-package.md))
   gives an overview of the functions and bundled data.
