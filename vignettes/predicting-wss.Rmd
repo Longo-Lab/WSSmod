@@ -31,7 +31,8 @@ predicts all 75 module scores of the bundled `"core_AD_plasma_biomarkers"`
 reference set from age, sex and eight plasma biomarkers, using a fitted
 `joinet` model (a two-layer elastic net) shipped with the package. The
 vignette [Calculating Weighted Sum Scores](calculating-wss.html) describes the
-scores themselves.
+scores themselves; the modules and biomarkers are described in the
+[preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
 The prediction has two steps:
 

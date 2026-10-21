@@ -29,7 +29,9 @@ association, and combined into a single module score per sample using a
 weighted average based on network connectivity (alpha centrality) and
 biomarker association strength.
 
-This package accompanies the Longo Lab plasma biomarker proteomics work.
+This package accompanies the Longo Lab preprint, Butler et al. (2026),
+[Alzheimer's disease blood biomarkers reveal proteomic modules of disease
+progression](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
 ## Installation
 

@@ -1,0 +1,21 @@
+bibentry(
+  "Article",
+  title = "Alzheimer's disease blood biomarkers reveal proteomic modules of disease progression",
+  author = c(
+    person("Robert R.", "Butler"),
+    person("Michael P.", "Brown"),
+    person("Audrey", "Weber"),
+    person("Greg A.", "Cary"),
+    person("others", role = "aut")
+  ),
+  journal = "medRxiv",
+  year = "2026",
+  doi = "10.64898/2026.08.14.26360394",
+  url = "https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text",
+  note = "Preprint",
+  textVersion = paste(
+    "Butler RR, Brown MP, Weber A, Cary GA, et al. (2026).",
+    "Alzheimer's disease blood biomarkers reveal proteomic modules of disease progression.",
+    "medRxiv. doi:10.64898/2026.08.14.26360394"
+  )
+)

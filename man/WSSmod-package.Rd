@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Computes Weighted Sum Score (WSS) module-level summaries from proteomic data. Protein-level values are sign-aligned to their association with core biomarkers and combined within 'STRING' network modules, weighted by network connectivity and association strength. Bundled reference modules and a fitted 'joinet' model also allow all module scores to be predicted from age, sex and a small panel of plasma biomarkers, without measuring the full proteomic panel.
+Computes Weighted Sum Score (WSS) module-level summaries from proteomic data. Protein-level values are sign-aligned to their association with core biomarkers and combined within 'STRING' network modules, weighted by network connectivity and association strength. Bundled reference modules and a fitted 'joinet' model also allow all module scores to be predicted from age, sex and a small panel of plasma biomarkers, without measuring the full proteomic panel. The method is described in Butler et al. (2026) \doi{10.64898/2026.08.14.26360394}.
 }
 \details{
 WSSmod computes Weighted Sum Score (WSS) values for protein network
@@ -39,6 +39,9 @@ give access to the prebuilt reference set.
 \item \link{wss_example_expression} and \link{wss_example_biomarkers} are small simulated
 datasets for trying out the functions.
 }
+
+The method is described in Butler et al. (2026),
+\url{https://doi.org/10.64898/2026.08.14.26360394}.
 }
 \seealso{
 Useful links:

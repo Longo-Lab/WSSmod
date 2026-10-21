@@ -25,6 +25,9 @@
 #' * [wss_example_expression] and [wss_example_biomarkers] are small simulated
 #'   datasets for trying out the functions.
 #'
+#' The method is described in Butler et al. (2026),
+#' <https://doi.org/10.64898/2026.08.14.26360394>.
+#'
 #' @keywords internal
 "_PACKAGE"
 

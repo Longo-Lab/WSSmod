@@ -39,6 +39,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
 
 ## Documentation
 
+* Added a citation (`citation("WSSmod")`) and links to the accompanying preprint.
 * New vignette, "Calculating Weighted Sum Scores", covering input normalization,
   the bundled and custom module tables, and scoring new samples against a
   reference cohort.

@@ -12,7 +12,8 @@ Description: Computes Weighted Sum Score (WSS) module-level summaries from
     by network connectivity and association strength. Bundled reference modules
     and a fitted 'joinet' model also allow all module scores to be predicted
     from age, sex and a small panel of plasma biomarkers, without measuring the
-    full proteomic panel.
+    full proteomic panel. The method is described in Butler et al. (2026)
+    <doi:10.64898/2026.08.14.26360394>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
