@@ -48,31 +48,10 @@ The model uses ten columns:
 
 * `Age`, in years,
 * `Gender`, numeric, with `1` for male and `0` for not male,
-* eight raw plasma biomarkers: `PlasmaPTau181`, `PlasmaAB142P`,
-  `PlasmaAB140P`, `PlasmaABRatio`, `PlasmapTau217`,
-  `PlasmapTau217_AB42Ratio`, `PlasmaGFAP` and `PlasmaNfL`.
-
-### How the biomarkers were measured
-
-The model was trained on plasma biomarkers measured as follows, and new values
-should come from a comparable procedure. Whole blood was collected into
-EDTA-coated tubes by standard venipuncture and centrifuged for 10 minutes at
-2,000 x g at 22 °C. The plasma was aliquoted into polypropylene tubes and
-stored at –80 °C until analysis.
-
-Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on the fully
+* eight raw plasma biomarkers: Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on the fully
 automated Lumipulse G 1200 platform (Fujirebio US, Inc, Malvern, PA),
 following the recommendations of the NACC Working Group. The two ratio columns
-are derived from these measures (Aβ42/Aβ40 and pTau217/Aβ42). Before analysis,
-
-* for pTau181, Aβ42 and Aβ40, samples were thawed and centrifuged for 5
-  minutes at 1,000 x g at 4 °C,
-* for pTau217, GFAP and NfL, samples were thawed and centrifuged for 10
-  minutes at 2,000 x g at 4 °C.
-
-The `PlasmaAB142P` and `PlasmaAB140P` columns hold the Aβ42 and Aβ40 values.
-The measurements were made by investigators blind to the demographic and
-clinical information of the samples.
+are derived from these measures (Aβ42/Aβ40 and pTau217/Aβ42).
 
 ### Example data
 
@@ -209,11 +188,14 @@ round(apply(pred$meta, 2, sd)[1:5], 2)
 * Human-readable labels for the modules are in
   `wss_prebuilt_terms("core_AD_plasma_biomarkers")`.
 
-```{r boxplot, eval = has_model, fig.width = 6, fig.height = 3.5, fig.alt = "Boxplots of predicted WSS scores for the first eight modules across 20 simulated patients."}
+```{r boxplot, eval = has_model, fig.width = 6, fig.height = 3.5, fig.alt = "Horizontal boxplots of predicted WSS scores for the first eight modules, labeled by module term, across 20 simulated patients."}
 # Spread of the first eight predicted module scores (simulated data, no
-# biological meaning)
-par(mar = c(6, 4, 1, 1))
-boxplot(pred$meta[, 1:8], las = 2, ylab = "Predicted WSS score")
+# biological meaning), labeled by module term
+terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+labels <- terms$term[match(colnames(pred$meta)[1:8], terms$name)]
+par(mar = c(4, 14, 1, 1))
+boxplot(pred$meta[, 1:8], names = labels, horizontal = TRUE, las = 1,
+        cex.axis = 0.7, xlab = "Predicted WSS score")
 ```
 
 ## Intended use and limits
