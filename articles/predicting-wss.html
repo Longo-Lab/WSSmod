@@ -104,37 +104,12 @@ run only if both are installed.</p>
 <li>
 <code>Gender</code>, numeric, with <code>1</code> for male and
 <code>0</code> for not male,</li>
-<li>eight raw plasma biomarkers: <code>PlasmaPTau181</code>,
-<code>PlasmaAB142P</code>, <code>PlasmaAB140P</code>,
-<code>PlasmaABRatio</code>, <code>PlasmapTau217</code>,
-<code>PlasmapTau217_AB42Ratio</code>, <code>PlasmaGFAP</code> and
-<code>PlasmaNfL</code>.</li>
+<li>eight raw plasma biomarkers: Plasma pTau181, pTau217, Aβ42, Aβ40,
+NfL and GFAP were measured on the fully automated Lumipulse G 1200
+platform (Fujirebio US, Inc, Malvern, PA), following the recommendations
+of the NACC Working Group. The two ratio columns are derived from these
+measures (Aβ42/Aβ40 and pTau217/Aβ42).</li>
 </ul>
-<div class="section level3">
-<h3 id="how-the-biomarkers-were-measured">How the biomarkers were measured<a class="anchor" aria-label="anchor" href="#how-the-biomarkers-were-measured"></a>
-</h3>
-<p>The model was trained on plasma biomarkers measured as follows, and
-new values should come from a comparable procedure. Whole blood was
-collected into EDTA-coated tubes by standard venipuncture and
-centrifuged for 10 minutes at 2,000 x g at 22 °C. The plasma was
-aliquoted into polypropylene tubes and stored at –80 °C until
-analysis.</p>
-<p>Plasma pTau181, pTau217, Aβ42, Aβ40, NfL and GFAP were measured on
-the fully automated Lumipulse G 1200 platform (Fujirebio US, Inc,
-Malvern, PA), following the recommendations of the NACC Working Group.
-The two ratio columns are derived from these measures (Aβ42/Aβ40 and
-pTau217/Aβ42). Before analysis,</p>
-<ul>
-<li>for pTau181, Aβ42 and Aβ40, samples were thawed and centrifuged for
-5 minutes at 1,000 x g at 4 °C,</li>
-<li>for pTau217, GFAP and NfL, samples were thawed and centrifuged for
-10 minutes at 2,000 x g at 4 °C.</li>
-</ul>
-<p>The <code>PlasmaAB142P</code> and <code>PlasmaAB140P</code> columns
-hold the Aβ42 and Aβ40 values. The measurements were made by
-investigators blind to the demographic and clinical information of the
-samples.</p>
-</div>
 <div class="section level3">
 <h3 id="example-data">Example data<a class="anchor" aria-label="anchor" href="#example-data"></a>
 </h3>
@@ -304,10 +279,13 @@ from data on a different scale, such as z-scaled log2 ratios.</li>
 </ul>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Spread of the first eight predicted module scores (simulated data, no</span></span>
-<span><span class="co"># biological meaning)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, las <span class="op">=</span> <span class="fl">2</span>, ylab <span class="op">=</span> <span class="st">"Predicted WSS score"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="predicting-wss_files/figure-html/boxplot-1.png" class="r-plt" alt="Boxplots of predicted WSS scores for the first eight modules across 20 simulated patients." width="576"></p>
+<span><span class="co"># biological meaning), labeled by module term</span></span>
+<span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms</a></span><span class="op">(</span><span class="st">"core_AD_plasma_biomarkers"</span><span class="op">)</span></span>
+<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="va">terms</span><span class="op">$</span><span class="va">term</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, <span class="va">terms</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, names <span class="op">=</span> <span class="va">labels</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>, las <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        cex.axis <span class="op">=</span> <span class="fl">0.7</span>, xlab <span class="op">=</span> <span class="st">"Predicted WSS score"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="predicting-wss_files/figure-html/boxplot-1.png" class="r-plt" alt="Horizontal boxplots of predicted WSS scores for the first eight modules, labeled by module term, across 20 simulated patients." width="576"></p>
 </div>
 </div>
 <div class="section level2">

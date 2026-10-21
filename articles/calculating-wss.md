@@ -150,13 +150,17 @@ head(res$module_proteins[["Merged.M17"]])
 ``` r
 
 # Spread of the first eight module scores (simulated data, no biological
-# meaning)
-par(mar = c(6, 4, 1, 1))
-boxplot(res$scores[, 1:8], las = 2, ylab = "WSS score")
+# meaning), labeled by module term
+terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+labels <- terms$term[match(colnames(res$scores)[1:8], terms$name)]
+par(mar = c(4, 14, 1, 1))
+boxplot(res$scores[, 1:8], names = labels, horizontal = TRUE, las = 1,
+        cex.axis = 0.7, xlab = "WSS score")
 ```
 
-![Boxplots of WSS scores for the first eight modules across the 50
-simulated samples.](calculating-wss_files/figure-html/boxplot-1.png)
+![Horizontal boxplots of WSS scores for the first eight modules, labeled
+by module term, across the 50 simulated
+samples.](calculating-wss_files/figure-html/boxplot-1.png)
 
 ## Using your own module table
 
