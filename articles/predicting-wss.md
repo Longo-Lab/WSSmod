@@ -14,8 +14,8 @@ instead predicts all 75 module scores of the bundled
 plasma biomarkers, using a fitted `joinet` model (a two-layer elastic
 net) shipped with the package. The vignette [Calculating Weighted Sum
 Scores](https://Longo-Lab.github.io/WSSmod/articles/calculating-wss.md)
-describes the scores themselves; the modules and biomarkers are
-described in the
+describes the scores themselves; the modules, biomarkers and prediction
+model are described in the
 [preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
 The prediction has two steps:

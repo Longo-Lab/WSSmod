@@ -326,12 +326,11 @@ values for the eight plasma biomarkers, in long format, that
 <span><span class="co">#&gt; 6: PlasmapTau217_AB42Ratio   389 5.14e-03</span></span>
 <span><span class="co">#&gt; 7:              PlasmaGFAP   389 5.88e+01</span></span>
 <span><span class="co">#&gt; 8:               PlasmaNfL   389 2.03e+01</span></span></code></pre></div>
-<p>The values are real, but each biomarker’s values were shuffled
-independently, so the reference keeps every biomarker’s distribution
-exactly while removing the link between biomarkers that could identify a
-person. Use it only for per-biomarker questions, such as where a new
-value falls within the distribution. It has no valid joint structure, so
-do not use it to look at relationships between biomarkers or to train or
+<p>This reference data comes from real distributions, but each biomarker
+has been scrambled independently to completely anonymize the values. It
+is used only for per-biomarker questions, such as where a new value
+falls within the distribution. It has no valid joint structure, so do
+not use it to look at relationships between biomarkers or to train or
 evaluate models.</p>
 </div>
 <div class="section level2">
@@ -360,8 +359,7 @@ biomarkers for 20 patients.</li>
 <p>The prebuilt files were derived from plasma proteomic and biomarker
 data from the Longo Lab, as described in the <a href="https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text" class="external-link">preprint</a>.
 They are included so that scores can be calculated and predicted without
-access to the original data. (Maintainer to finalize the provenance and
-licensing statement for each file.)</p>
+access to the original data.</p>
 </div>
 <div class="section level2">
 <h2 id="adding-a-reference-set">Adding a reference set<a class="anchor" aria-label="anchor" href="#adding-a-reference-set"></a>

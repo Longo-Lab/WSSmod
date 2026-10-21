@@ -258,12 +258,11 @@ reference[, .(n = .N, median = signif(median(value), 3)), by = biomarker]
 #> 8:               PlasmaNfL   389 2.03e+01
 ```
 
-The values are real, but each biomarker’s values were shuffled
-independently, so the reference keeps every biomarker’s distribution
-exactly while removing the link between biomarkers that could identify a
-person. Use it only for per-biomarker questions, such as where a new
-value falls within the distribution. It has no valid joint structure, so
-do not use it to look at relationships between biomarkers or to train or
+This reference data comes from real distributions, but each biomarker
+has been scrambled independently to completely anonymize the values. It
+is used only for per-biomarker questions, such as where a new value
+falls within the distribution. It has no valid joint structure, so do
+not use it to look at relationships between biomarkers or to train or
 evaluate models.
 
 ## Simulated example data
@@ -290,8 +289,7 @@ The prebuilt files were derived from plasma proteomic and biomarker data
 from the Longo Lab, as described in the
 [preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 They are included so that scores can be calculated and predicted without
-access to the original data. (Maintainer to finalize the provenance and
-licensing statement for each file.)
+access to the original data.
 
 ## Adding a reference set
 
