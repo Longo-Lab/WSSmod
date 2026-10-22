@@ -16,6 +16,7 @@ Description: Computes Weighted Sum Score (WSS) module-level summaries from
     <doi:10.64898/2026.08.14.26360394>.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends:

@@ -42,7 +42,7 @@ matching the module size filter (\code{N > 2}) used to build the original
 }
 \value{
 A list containing:
-\item{scores}{Matrix of weighted module scores (samples x modules)}
+\item{scores}{Matrix of Weighted Sum Scores (samples x modules)}
 \item{summary_stats}{data.table with summary statistics for each module score}
 \item{module_sd}{Named vector of standard deviations for each module}
 \item{module_proteins}{List of protein names in each module}
@@ -97,7 +97,7 @@ cluster_result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-# Calculate weighted module scores (min_module_size = 1 to keep this toy example)
+# Calculate Weighted Sum Scores (min_module_size = 1 to keep this toy example)
 module_results <- calculate_WSS(expr_matrix, cluster_result, min_module_size = 1)
 
 # Access score matrix
