@@ -108,7 +108,7 @@ own function:</p>
 </tr>
 <tr class="even">
 <td>terms</td>
-<td><code><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms()</a></code></td>
+<td><code><a href="../reference/load_prebuilt_terms.html">load_prebuilt_terms()</a></code></td>
 <td>module labels and enrichment summary</td>
 </tr>
 <tr class="odd">
@@ -214,12 +214,12 @@ also covers.</p>
 <div class="section level2">
 <h2 id="module-term-labels">Module term labels<a class="anchor" aria-label="anchor" href="#module-term-labels"></a>
 </h2>
-<p><code><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms()</a></code> returns one row per scored module
+<p><code><a href="../reference/load_prebuilt_terms.html">load_prebuilt_terms()</a></code> returns one row per scored module
 with a short label, the group the module came from, and
 <code>mean.Zsum</code>, the Zsummary preservation score of the module
 across 12 independent GNPC cohorts in the <a href="https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text" class="external-link">preprint</a>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wss_prebuilt_terms.html">wss_prebuilt_terms</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_prebuilt_terms.html">load_prebuilt_terms</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">terms</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 75  4</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">terms</span><span class="op">)</span></span>

@@ -29,7 +29,7 @@ up to four files, and each is read with its own function:
 | File | Function | Contents |
 |----|----|----|
 | scores | [`load_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss.md) | module and protein weighting table |
-| terms | [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md) | module labels and enrichment summary |
+| terms | [`load_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_terms.md) | module labels and enrichment summary |
 | model | [`load_prebuilt_wss_model()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss_model.md) | fitted `joinet` prediction model |
 | biomarker reference | [`load_prebuilt_biomarker_reference()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_biomarker_reference.md) | anonymized baseline biomarker values |
 
@@ -129,7 +129,7 @@ c(
 
 ## Module term labels
 
-[`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
+[`load_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_terms.md)
 returns one row per scored module with a short label, the group the
 module came from, and `mean.Zsum`, the Zsummary preservation score of
 the module across 12 independent GNPC cohorts in the
@@ -137,7 +137,7 @@ the module across 12 independent GNPC cohorts in the
 
 ``` r
 
-terms <- wss_prebuilt_terms()
+terms <- load_prebuilt_terms()
 dim(terms)
 #> [1] 75  4
 head(terms)

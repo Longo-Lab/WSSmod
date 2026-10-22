@@ -235,13 +235,13 @@ round(apply(pred$meta, 2, sd)[1:5], 2)
   [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)
   from data on a different scale, such as z-scaled log2 ratios.
 - Human-readable labels for the modules are in
-  `wss_prebuilt_terms("core_AD_plasma_biomarkers")`.
+  `load_prebuilt_terms("core_AD_plasma_biomarkers")`.
 
 ``` r
 
 # Spread of the first eight predicted module scores (simulated data, no
 # biological meaning), labeled by module term
-terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 labels <- terms$term[match(colnames(pred$meta)[1:8], terms$name)]
 par(mar = c(4, 14, 1, 1))
 boxplot(pred$meta[, 1:8], names = labels, horizontal = TRUE, las = 1,

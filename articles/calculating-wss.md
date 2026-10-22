@@ -153,7 +153,7 @@ head(res$module_proteins[["Merged.M17"]])
 
 # Spread of the first eight module scores (simulated data, no biological
 # meaning), labeled by module term
-terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 labels <- terms$term[match(colnames(res$scores)[1:8], terms$name)]
 par(mar = c(4, 14, 1, 1))
 boxplot(res$scores[, 1:8], names = labels, horizontal = TRUE, las = 1,

@@ -90,7 +90,7 @@ list_prebuilt_wss()
 WSSmod::calculate_WSS(expr_matrix)
 
 # Human-readable module term labels for the same reference set
-wss_prebuilt_terms("core_AD_plasma_biomarkers")
+load_prebuilt_terms("core_AD_plasma_biomarkers")
 ```
 
 ## Predicting module scores from core biomarkers
@@ -147,6 +147,8 @@ pred$meta
   : List Available Prebuilt WSS Reference Sets
 - [`load_prebuilt_biomarker_reference()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_biomarker_reference.md)
   : Load a Prebuilt Biomarker Reference Distribution
+- [`load_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_terms.md)
+  : Get Module Term Labels for a Prebuilt WSS Reference Set
 - [`load_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss.md)
   : Load a Prebuilt WSS Module/Weighting Table
 - [`load_prebuilt_wss_model()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss_model.md)
@@ -161,8 +163,6 @@ pred$meta
   : Simulated Plasma Biomarkers for WSS Prediction Examples
 - [`wss_example_expression`](https://Longo-Lab.github.io/WSSmod/reference/wss_example_expression.md)
   : Simulated Expression Matrix for WSS Examples
-- [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
-  : Get Module Term Labels for a Prebuilt WSS Reference Set
 
 # Articles
 

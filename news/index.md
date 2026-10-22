@@ -17,7 +17,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in
 - [`load_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss.md),
   [`list_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/list_prebuilt_wss.md),
   and
-  [`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
+  [`load_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_terms.md)
   provide access to a bundled reference module/weighting table
   (`"core_AD_plasma_biomarkers"`) and its module term labels.
 - [`calculate_WSS()`](https://Longo-Lab.github.io/WSSmod/reference/calculate_WSS.md)

@@ -114,7 +114,7 @@ are ignored.
 
 [`list_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/list_prebuilt_wss.md),
 [`load_prebuilt_wss()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_wss.md),
-[`wss_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/wss_prebuilt_terms.md)
+[`load_prebuilt_terms()`](https://Longo-Lab.github.io/WSSmod/reference/load_prebuilt_terms.md)
 
 ## Examples
 
