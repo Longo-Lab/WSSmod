@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">WSSmod</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,10 +38,10 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="wssmod-development-version">WSSmod (development version)<a class="anchor" aria-label="anchor" href="#wssmod-development-version"></a></h2>
-<p>Work toward the first release, 0.1.0 (CRAN submission tracked in <a href="https://github.com/Longo-Lab/WSSmod/issues/4" class="external-link">#4</a>).</p>
+<h2 class="pkg-version" data-toc-text="0.1.0" id="wssmod-010">WSSmod 0.1.0<a class="anchor" aria-label="anchor" href="#wssmod-010"></a></h2>
+<p>First release.</p>
 <div class="section level3">
-<h3 id="module-scores-development-version">Module scores<a class="anchor" aria-label="anchor" href="#module-scores-development-version"></a></h3>
+<h3 id="module-scores-0-1-0">Module scores<a class="anchor" aria-label="anchor" href="#module-scores-0-1-0"></a></h3>
 <ul><li>
 <code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> computes Weighted Sum Score module-level summaries from proteomic data, using STRING network connectivity and biomarker-association weighting to align and aggregate protein-level signal into module scores. Supports <code>dedup_by</code> and <code>min_module_size</code> options for controlling how genes assigned to multiple modules are deduplicated and how small modules are filtered.</li>
 <li>
@@ -53,7 +53,7 @@
 <li>The documentation now states that a module with none of its proteins in the matrix is reported with all-<code>NA</code> scores and a <code>module_sd</code> of 0.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="prediction-from-core-biomarkers-development-version">Prediction from core biomarkers<a class="anchor" aria-label="anchor" href="#prediction-from-core-biomarkers-development-version"></a></h3>
+<h3 id="prediction-from-core-biomarkers-0-1-0">Prediction from core biomarkers<a class="anchor" aria-label="anchor" href="#prediction-from-core-biomarkers-0-1-0"></a></h3>
 <ul><li>
 <code><a href="../reference/predict_WSS.html">predict_WSS()</a></code> predicts all 75 module scores for the <code>"core_AD_plasma_biomarkers"</code> reference set from Age, Gender, and 8 core plasma biomarkers, using a bundled <code>joinet</code> two-layer elastic net model, without requiring the full proteomic panel.</li>
 <li>
@@ -62,7 +62,7 @@
 <code><a href="../reference/project_rank_norm.html">project_rank_norm()</a></code> and <code><a href="../reference/load_prebuilt_biomarker_reference.html">load_prebuilt_biomarker_reference()</a></code> expose the underlying projection utility and reference distribution directly.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="documentation-development-version">Documentation<a class="anchor" aria-label="anchor" href="#documentation-development-version"></a></h3>
+<h3 id="documentation-0-1-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-1-0"></a></h3>
 <ul><li>Added a citation (<code>citation("WSSmod")</code>) and links to the accompanying preprint.</li>
 <li>New vignette, “Calculating Weighted Sum Scores”, covering input normalization, the bundled and custom module tables, and scoring new samples against a reference cohort.</li>
 <li>New vignette, “Predicting Weighted Sum Scores from plasma biomarkers”, covering the biomarker inputs, the two normalization methods, and reading the predicted module scores.</li>
@@ -72,7 +72,7 @@
 <code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code> now documents what input scale it expects.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="example-data-development-version">Example data<a class="anchor" aria-label="anchor" href="#example-data-development-version"></a></h3>
+<h3 id="example-data-0-1-0">Example data<a class="anchor" aria-label="anchor" href="#example-data-0-1-0"></a></h3>
 <ul><li>
 <code>wss_example_expression</code> and <code>wss_example_biomarkers</code> are small, fully simulated datasets (no participant data) for trying out <code><a href="../reference/calculate_WSS.html">calculate_WSS()</a></code>, <code><a href="../reference/normalize_wss_biomarkers.html">normalize_wss_biomarkers()</a></code> and <code><a href="../reference/predict_WSS.html">predict_WSS()</a></code>.</li>
 </ul><p>The bundled model and reference data were verified end-to-end against the original analysis’s held-out follow-up cohort, reproducing published predictions to floating-point precision.</p>

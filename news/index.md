@@ -1,9 +1,8 @@
 # Changelog
 
-## WSSmod (development version)
+## WSSmod 0.1.0
 
-Work toward the first release, 0.1.0 (CRAN submission tracked in
-[\#4](https://github.com/Longo-Lab/WSSmod/issues/4)).
+First release.
 
 ### Module scores
 
