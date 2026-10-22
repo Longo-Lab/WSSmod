@@ -62,7 +62,7 @@ A list containing:
 
 - scores:
 
-  Matrix of weighted module scores (samples x modules)
+  Matrix of Weighted Sum Scores (samples x modules)
 
 - summary_stats:
 
@@ -131,7 +131,7 @@ cluster_result <- data.table::data.table(
   mean_alpha_scaled = c(1, 1, 2, 1)
 )
 
-# Calculate weighted module scores (min_module_size = 1 to keep this toy example)
+# Calculate Weighted Sum Scores (min_module_size = 1 to keep this toy example)
 module_results <- calculate_WSS(expr_matrix, cluster_result, min_module_size = 1)
 
 # Access score matrix
