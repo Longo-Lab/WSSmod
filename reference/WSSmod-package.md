@@ -52,7 +52,8 @@ modules, and predicts them from a small panel of plasma biomarkers.
   are small simulated datasets for trying out the functions.
 
 The method is described in Butler et al. (2026),
-<https://doi.org/10.64898/2026.08.14.26360394>.
+[doi:10.64898/2026.08.14.26360394](https://doi.org/10.64898/2026.08.14.26360394)
+.
 
 ## See also
 
