@@ -41,7 +41,7 @@ datasets for trying out the functions.
 }
 
 The method is described in Butler et al. (2026),
-\url{https://doi.org/10.64898/2026.08.14.26360394}.
+\doi{10.64898/2026.08.14.26360394}.
 }
 \seealso{
 Useful links:
