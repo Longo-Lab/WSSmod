@@ -95,7 +95,7 @@
 #' default_results <- calculate_WSS(wss_example_expression)
 #' dim(default_results$scores)
 #'
-#' @seealso [list_prebuilt_wss()], [load_prebuilt_wss()], [wss_prebuilt_terms()]
+#' @seealso [list_prebuilt_wss()], [load_prebuilt_wss()], [load_prebuilt_terms()]
 #'
 #' @import data.table
 #' @importFrom stats sd

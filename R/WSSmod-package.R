@@ -19,7 +19,7 @@
 #'
 #' **Bundled reference data**
 #'
-#' * [list_prebuilt_wss()], [load_prebuilt_wss()], [wss_prebuilt_terms()],
+#' * [list_prebuilt_wss()], [load_prebuilt_wss()], [load_prebuilt_terms()],
 #'   [load_prebuilt_wss_model()] and [load_prebuilt_biomarker_reference()]
 #'   give access to the prebuilt reference set.
 #' * [wss_example_expression] and [wss_example_biomarkers] are small simulated

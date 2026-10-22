@@ -47,7 +47,7 @@
 #'   `mean_beta`, and `mean_alpha_scaled`, suitable for use as the `result`
 #'   argument of [calculate_WSS()].
 #'
-#' @seealso [calculate_WSS()], [list_prebuilt_wss()], [wss_prebuilt_terms()]
+#' @seealso [calculate_WSS()], [list_prebuilt_wss()], [load_prebuilt_terms()]
 #'
 #' @examples
 #' ref <- load_prebuilt_wss()
@@ -90,11 +90,11 @@ list_prebuilt_wss <-function() {
 #'   reference set has no associated terms file.
 #'
 #' @examples
-#' head(wss_prebuilt_terms())
+#' head(load_prebuilt_terms())
 #'
 #' @importFrom data.table fread
 #' @export
-wss_prebuilt_terms <-function(prebuilt = "core_AD_plasma_biomarkers") {
+load_prebuilt_terms <-function(prebuilt = "core_AD_plasma_biomarkers") {
   entry <- .wss_prebuilt_entry(prebuilt)
 
   if (is.null(entry$terms)) {

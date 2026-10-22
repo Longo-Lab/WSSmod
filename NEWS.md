@@ -10,7 +10,7 @@ Work toward the first release, 0.1.0 (CRAN submission tracked in #4).
   signal into module scores. Supports `dedup_by` and `min_module_size`
   options for controlling how genes assigned to multiple modules are
   deduplicated and how small modules are filtered.
-* `load_prebuilt_wss()`, `list_prebuilt_wss()`, and `wss_prebuilt_terms()`
+* `load_prebuilt_wss()`, `list_prebuilt_wss()`, and `load_prebuilt_terms()`
   provide access to a bundled reference module/weighting table
   (`"core_AD_plasma_biomarkers"`) and its module term labels.
 * `calculate_WSS()` accepts a data frame as `result` (converted to a

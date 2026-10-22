@@ -38,7 +38,7 @@ files, and each is read with its own function:
 | File | Function | Contents |
 |------|----------|----------|
 | scores | `load_prebuilt_wss()` | module and protein weighting table |
-| terms | `wss_prebuilt_terms()` | module labels and enrichment summary |
+| terms | `load_prebuilt_terms()` | module labels and enrichment summary |
 | model | `load_prebuilt_wss_model()` | fitted `joinet` prediction model |
 | biomarker reference | `load_prebuilt_biomarker_reference()` | anonymized baseline biomarker values |
 
@@ -105,13 +105,13 @@ c(
 
 ## Module term labels
 
-`wss_prebuilt_terms()` returns one row per scored module with a short label,
+`load_prebuilt_terms()` returns one row per scored module with a short label,
 the group the module came from, and `mean.Zsum`, the Zsummary preservation
 score of the module across 12 independent GNPC cohorts in the
 [preprint](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full-text).
 
 ```{r terms}
-terms <- wss_prebuilt_terms()
+terms <- load_prebuilt_terms()
 dim(terms)
 head(terms)
 ```

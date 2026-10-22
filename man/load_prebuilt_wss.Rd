@@ -27,5 +27,5 @@ head(ref[, c("module", "symbol", "mean_beta", "mean_alpha_scaled")])
 
 }
 \seealso{
-\code{\link[=calculate_WSS]{calculate_WSS()}}, \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=wss_prebuilt_terms]{wss_prebuilt_terms()}}
+\code{\link[=calculate_WSS]{calculate_WSS()}}, \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=load_prebuilt_terms]{load_prebuilt_terms()}}
 }

@@ -20,8 +20,8 @@ test_that("load_prebuilt_wss errors on an unknown prebuilt name", {
   )
 })
 
-test_that("wss_prebuilt_terms returns module term labels for the default set", {
-  terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+test_that("load_prebuilt_terms returns module term labels for the default set", {
+  terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 
   expect_true(data.table::is.data.table(terms))
   expect_true(all(c("name", "term", "group", "mean.Zsum") %in% names(terms)))

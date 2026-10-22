@@ -116,5 +116,5 @@ dim(default_results$scores)
 
 }
 \seealso{
-\code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=load_prebuilt_wss]{load_prebuilt_wss()}}, \code{\link[=wss_prebuilt_terms]{wss_prebuilt_terms()}}
+\code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=load_prebuilt_wss]{load_prebuilt_wss()}}, \code{\link[=load_prebuilt_terms]{load_prebuilt_terms()}}
 }

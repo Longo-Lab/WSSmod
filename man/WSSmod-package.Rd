@@ -33,7 +33,7 @@ normalized biomarkers (needs the suggested packages \code{glmnet} and
 
 \strong{Bundled reference data}
 \itemize{
-\item \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=load_prebuilt_wss]{load_prebuilt_wss()}}, \code{\link[=wss_prebuilt_terms]{wss_prebuilt_terms()}},
+\item \code{\link[=list_prebuilt_wss]{list_prebuilt_wss()}}, \code{\link[=load_prebuilt_wss]{load_prebuilt_wss()}}, \code{\link[=load_prebuilt_terms]{load_prebuilt_terms()}},
 \code{\link[=load_prebuilt_wss_model]{load_prebuilt_wss_model()}} and \code{\link[=load_prebuilt_biomarker_reference]{load_prebuilt_biomarker_reference()}}
 give access to the prebuilt reference set.
 \item \link{wss_example_expression} and \link{wss_example_biomarkers} are small simulated

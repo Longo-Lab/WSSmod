@@ -191,12 +191,12 @@ round(apply(pred$meta, 2, sd)[1:5], 2)
   comparable with scores computed by `calculate_WSS()` from data on a different
   scale, such as z-scaled log2 ratios.
 * Human-readable labels for the modules are in
-  `wss_prebuilt_terms("core_AD_plasma_biomarkers")`.
+  `load_prebuilt_terms("core_AD_plasma_biomarkers")`.
 
 ```{r boxplot, eval = has_model, fig.width = 6, fig.height = 3.5, fig.alt = "Horizontal boxplots of predicted WSS scores for the first eight modules, labeled by module term, across 20 simulated patients."}
 # Spread of the first eight predicted module scores (simulated data, no
 # biological meaning), labeled by module term
-terms <- wss_prebuilt_terms("core_AD_plasma_biomarkers")
+terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 labels <- terms$term[match(colnames(pred$meta)[1:8], terms$name)]
 par(mar = c(4, 14, 1, 1))
 boxplot(pred$meta[, 1:8], names = labels, horizontal = TRUE, las = 1,

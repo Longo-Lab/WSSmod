@@ -84,7 +84,7 @@ list_prebuilt_wss()
 WSSmod::calculate_WSS(expr_matrix)
 
 # Human-readable module term labels for the same reference set
-wss_prebuilt_terms("core_AD_plasma_biomarkers")
+load_prebuilt_terms("core_AD_plasma_biomarkers")
 ```
 
 ## Predicting module scores from core biomarkers
