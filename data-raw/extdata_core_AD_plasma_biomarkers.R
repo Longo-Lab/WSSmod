@@ -20,6 +20,9 @@
 #'   reference. Real values from the 389 baseline samples in the joint
 #'   complete-case set the model was fit on, with each biomarker independently
 #'   shuffled (seed 42) so no values can be linked across biomarkers.
+#'   Only the eight biomarker columns are written. The outcomes, Age, Gender,
+#'   genetic PCs, APOE and HybControlNormScale are loaded solely to define the
+#'   joint complete-case filter and are not shipped.
 #'
 #' data.table is used for the reference because its merge order fixes the row
 #' order that the seeded shuffle acts on; changing it changes the output.
