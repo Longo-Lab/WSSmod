@@ -2,6 +2,8 @@
 
 ## WSSmod 0.1.0
 
+CRAN release: 2026-11-03
+
 First release.
 
 ### Module scores

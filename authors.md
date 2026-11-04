@@ -10,7 +10,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/Longo-Lab/WSSmod/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/Longo-Lab/WSSmod/blob/v0.1.0/inst/CITATION)
 
 Butler RR, Brown MP, Weber A, Cary GA, Le Guen Y, Moran Losada P,
 Mendiola JH, Henderson VW, Sha SJ, Poston KL, Andreasson KI, Wagner AD,
