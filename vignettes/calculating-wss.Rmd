@@ -10,9 +10,6 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
-# Keep data.table within CRAN's thread limits
-data.table::setDTthreads(2)
-
 # RNOmni is a suggested package; chunks that need it are skipped without it
 has_rnomni <- requireNamespace("RNOmni", quietly = TRUE)
 ```
