@@ -26,6 +26,13 @@ progression](https://www.medrxiv.org/content/10.64898/2026.08.14.26360394v1.full
 
 ## Installation
 
+You can install the released version of WSSmod from
+[CRAN](https://CRAN.R-project.org/package=WSSmod) with:
+
+``` r
+install.packages("WSSmod")
+```
+
 You can install the development version of WSSmod from GitHub with:
 
 ``` r
