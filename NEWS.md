@@ -1,5 +1,8 @@
 # WSSmod (development version)
 
+* The vignette plots now restore the graphical parameters they change, and the
+  vignettes no longer set the `data.table` thread count.
+
 # WSSmod 0.1.0
 
 First release.
