@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">WSSmod</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Predicting Weighted Sum Scores from plasma biomarkers</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Longo-Lab/WSSmod/blob/v0.1.0/vignettes/predicting-wss.Rmd" class="external-link"><code>vignettes/predicting-wss.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Longo-Lab/WSSmod/blob/main/vignettes/predicting-wss.Rmd" class="external-link"><code>vignettes/predicting-wss.Rmd</code></a></small>
       <div class="d-none name"><code>predicting-wss.Rmd</code></div>
     </div>
 
@@ -289,10 +289,12 @@ from data on a different scale, such as z-scaled log2 ratios.</li>
 <span><span class="co"># biological meaning), labeled by module term</span></span>
 <span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_prebuilt_terms.html">load_prebuilt_terms</a></span><span class="op">(</span><span class="st">"core_AD_plasma_biomarkers"</span><span class="op">)</span></span>
 <span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="va">terms</span><span class="op">$</span><span class="va">term</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, <span class="va">terms</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">oldpar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">pred</span><span class="op">$</span><span class="va">meta</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, names <span class="op">=</span> <span class="va">labels</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>, las <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>        cex.axis <span class="op">=</span> <span class="fl">0.7</span>, xlab <span class="op">=</span> <span class="st">"Predicted WSS score"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="predicting-wss_files/figure-html/boxplot-1.png" class="r-plt" alt="Horizontal boxplots of predicted WSS scores for the first eight modules, labeled by module term, across 20 simulated patients." width="576"></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

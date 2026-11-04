@@ -243,7 +243,7 @@ round(apply(pred$meta, 2, sd)[1:5], 2)
 # biological meaning), labeled by module term
 terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 labels <- terms$term[match(colnames(pred$meta)[1:8], terms$name)]
-par(mar = c(4, 14, 1, 1))
+oldpar <- par(mar = c(4, 14, 1, 1))
 boxplot(pred$meta[, 1:8], names = labels, horizontal = TRUE, las = 1,
         cex.axis = 0.7, xlab = "Predicted WSS score")
 ```
@@ -251,6 +251,11 @@ boxplot(pred$meta[, 1:8], names = labels, horizontal = TRUE, las = 1,
 ![Horizontal boxplots of predicted WSS scores for the first eight
 modules, labeled by module term, across 20 simulated
 patients.](predicting-wss_files/figure-html/boxplot-1.png)
+
+``` r
+
+par(oldpar)
+```
 
 ## Intended use and limits
 

@@ -155,7 +155,7 @@ head(res$module_proteins[["Merged.M17"]])
 # meaning), labeled by module term
 terms <- load_prebuilt_terms("core_AD_plasma_biomarkers")
 labels <- terms$term[match(colnames(res$scores)[1:8], terms$name)]
-par(mar = c(4, 14, 1, 1))
+oldpar <- par(mar = c(4, 14, 1, 1))
 boxplot(res$scores[, 1:8], names = labels, horizontal = TRUE, las = 1,
         cex.axis = 0.7, xlab = "WSS score")
 ```
@@ -163,6 +163,11 @@ boxplot(res$scores[, 1:8], names = labels, horizontal = TRUE, las = 1,
 ![Horizontal boxplots of WSS scores for the first eight modules, labeled
 by module term, across the 50 simulated
 samples.](calculating-wss_files/figure-html/boxplot-1.png)
+
+``` r
+
+par(oldpar)
+```
 
 ## Using your own module table
 

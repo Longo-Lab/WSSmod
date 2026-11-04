@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">WSSmod</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Calculating Weighted Sum Scores</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Longo-Lab/WSSmod/blob/v0.1.0/vignettes/calculating-wss.Rmd" class="external-link"><code>vignettes/calculating-wss.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Longo-Lab/WSSmod/blob/main/vignettes/calculating-wss.Rmd" class="external-link"><code>vignettes/calculating-wss.Rmd</code></a></small>
       <div class="d-none name"><code>calculating-wss.Rmd</code></div>
     </div>
 
@@ -201,10 +201,12 @@ scored module.</p>
 <span><span class="co"># meaning), labeled by module term</span></span>
 <span><span class="va">terms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_prebuilt_terms.html">load_prebuilt_terms</a></span><span class="op">(</span><span class="st">"core_AD_plasma_biomarkers"</span><span class="op">)</span></span>
 <span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="va">terms</span><span class="op">$</span><span class="va">term</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">scores</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, <span class="va">terms</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">oldpar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span>, names <span class="op">=</span> <span class="va">labels</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>, las <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>        cex.axis <span class="op">=</span> <span class="fl">0.7</span>, xlab <span class="op">=</span> <span class="st">"WSS score"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="calculating-wss_files/figure-html/boxplot-1.png" class="r-plt" alt="Horizontal boxplots of WSS scores for the first eight modules, labeled by module term, across the 50 simulated samples." width="576"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="using-your-own-module-table">Using your own module table<a class="anchor" aria-label="anchor" href="#using-your-own-module-table"></a>
@@ -232,7 +234,7 @@ dropped.</p>
 <p>The next table has three modules. One protein, the first one listed,
 is in both <code>modA</code> and <code>modB</code>, with a higher weight
 in <code>modA</code>. <code>modC</code> has only two proteins.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">proteins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">wss_example_expression</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span></span>
 <span></span>
 <span><span class="va">custom</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table</a></span><span class="op">(</span></span>
@@ -262,7 +264,7 @@ in <code>modA</code>. <code>modC</code> has only two proteins.</p>
 <span><span class="co">#&gt; 13:   modC    EPHA2         1               0.8         0.5</span></span></code></pre></div>
 <p>With the defaults, the shared protein stays in <code>modA</code> and
 <code>modC</code> is dropped:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">custom_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">wss_example_expression</span>, <span class="va">custom</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">custom_res</span><span class="op">$</span><span class="va">module_proteins</span><span class="op">)</span></span>
 <span><span class="co">#&gt; modA modB </span></span>
@@ -270,7 +272,7 @@ in <code>modA</code>. <code>modC</code> has only two proteins.</p>
 <p>Ranking duplicates by another column changes which module keeps the
 shared protein. Here <code>specificity</code> favors <code>modB</code>,
 so <code>modA</code> loses it:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">by_specificity</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span></span>
 <span>  <span class="va">wss_example_expression</span>,</span>
 <span>  <span class="va">custom</span>,</span>
@@ -280,7 +282,7 @@ so <code>modA</code> loses it:</p>
 <span><span class="co">#&gt; modB modA </span></span>
 <span><span class="co">#&gt;    6    4</span></span></code></pre></div>
 <p>Lowering <code>min_module_size</code> keeps the small module:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">with_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span></span>
 <span>  <span class="va">wss_example_expression</span>,</span>
 <span>  <span class="va">custom</span>,</span>
@@ -302,7 +304,7 @@ at <code>module_proteins</code> or at all-<code>NA</code> columns in
 module table, not the matrix, so a module can be scored from only a few
 of its proteins; check <code>module_proteins</code> before relying on a
 sparsely covered module.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Keep only the first 300 proteins; the warnings are suppressed here</span></span>
 <span><span class="va">partial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">wss_example_expression</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">300</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -316,7 +318,7 @@ supported for the proteins a module uses. <code><a href="../reference/calculate_
 stops with an error that names the affected proteins, so impute the
 values, or drop the affected proteins or samples, before calling it.
 Missing values in proteins that no module uses are ignored.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># One missing value in a protein that a module uses</span></span>
 <span><span class="va">with_na</span> <span class="op">&lt;-</span> <span class="va">wss_example_expression</span></span>
 <span><span class="va">with_na</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
@@ -335,7 +337,7 @@ reference cohort in-sample and use <code><a href="../reference/project_rank_norm
 place each new value within the frozen reference.</p>
 <p>Here the first 40 mock samples play the reference cohort and the last
 10 the new samples.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reference_rows</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">40</span></span>
 <span><span class="va">new_rows</span> <span class="op">&lt;-</span> <span class="fl">41</span><span class="op">:</span><span class="fl">50</span></span>
 <span></span>
@@ -353,7 +355,7 @@ place each new value within the frozen reference.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">new_int</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">raw</span><span class="op">)</span><span class="op">[</span><span class="va">new_rows</span><span class="op">]</span></span></code></pre></div>
 <p>With the reference and the new samples on the same INT scale, both
 can be scored in the same way:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reference_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">reference_int</span><span class="op">)</span></span>
 <span><span class="va">new_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_WSS.html">calculate_WSS</a></span><span class="op">(</span><span class="va">new_int</span><span class="op">)</span></span>
 <span></span>
