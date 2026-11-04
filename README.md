@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![Version](https://img.shields.io/badge/version-0.1.0.9000-blue.svg)](https://github.com/Longo-Lab/WSSmod/blob/main/DESCRIPTION)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/WSSmod)](https://CRAN.R-project.org/package=WSSmod)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Longo-Lab/WSSmod/actions/workflows/R-CMD-check.yaml)
